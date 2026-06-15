@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vicioculto · Despojos &amp; Desalojos · Dashboard de Producción 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0c0b09;--bg2:#141310;--bg3:#1c1a16;--bg4:#242220;
+  --line:#2e2c28;--line2:#3a3834;
+  --text:#f0ebe0;--text2:#c8c3b8;--muted:#7a776e;--muted2:#9a9790;
+  --accent:#c0392b;--gold:#c9a84c;--teal:#2e8b65;--blue:#4a7fbf;--amber:#d4870a;--purple:#8b6dc9;
+  --fh:'Syne',sans-serif;--fb:'DM Sans',sans-serif;
+  --r:8px;--r2:14px;--r3:20px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:14.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:300;background:rgba(12,11,9,.97);backdrop-filter:blur(18px);border-bottom:.5px solid var(--line)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px}
+.nav-logo{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--text);letter-spacing:.01em;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.nav-logo .vc{color:var(--accent);letter-spacing:.06em}
+.nav-links{display:flex;gap:2px;flex-wrap:wrap}
+.nl{font-size:11px;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:var(--r3);border:none;background:none;cursor:pointer;transition:all .15s;text-decoration:none;white-space:nowrap;font-family:var(--fb)}
+.nl:hover,.nl.active{color:var(--text);background:var(--bg3)}
+.hero{max-width:1200px;margin:0 auto;padding:5.5rem 2rem 4.5rem;position:relative;overflow:hidden}
+.hero-bg-txt{position:absolute;right:-20px;top:50%;transform:translateY(-52%);font-family:var(--fh);font-size:min(22vw,260px);font-weight:800;color:rgba(255,255,255,.016);line-height:1;pointer-events:none;user-select:none;letter-spacing:-.04em}
+.hero-podcast-tag{display:inline-flex;align-items:center;gap:8px;margin-bottom:1.5rem;padding:5px 14px;border:.5px solid var(--accent);border-radius:var(--r3);background:rgba(192,57,43,.06)}
+.hero-podcast-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-podcast-tag span{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.hero-podcast-tag .vc-name{color:var(--text);font-weight:800;font-family:var(--fh)}
+.hero-title{font-family:var(--fh);font-size:clamp(44px,7vw,88px);font-weight:800;line-height:.92;letter-spacing:-.03em;margin-bottom:1.75rem}
+.hero-title .acc{color:var(--accent)}
+.hero-title .dim{color:var(--muted);font-size:.62em}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;margin-bottom:2.5rem;align-items:start}
+.hero-desc{font-size:15px;color:var(--text2);line-height:1.8;font-weight:300}
+.hero-desc strong{color:var(--text);font-weight:500}
+.hero-kpi{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.hkpi{background:var(--bg2);padding:1.1rem 1.4rem}
+.hkpi-n{font-family:var(--fh);font-size:29px;font-weight:800;line-height:1}
+.hkpi-n sup{font-size:12px;color:var(--accent);vertical-align:super}
+.hkpi-n.danger{color:var(--accent)}.hkpi-n.warn{color:var(--gold)}
+.hkpi-l{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.4}
+.htags{display:flex;gap:6px;flex-wrap:wrap}
+.htag{font-size:11px;font-weight:500;padding:4px 12px;border-radius:var(--r3);border:.5px solid var(--line2);color:var(--muted2)}
+.htag.hot{border-color:var(--accent);color:var(--accent);background:rgba(192,57,43,.08)}
+.htag.gold{border-color:var(--gold);color:var(--gold)}
+.htag.purple{border-color:var(--purple);color:var(--purple)}
+.wrap{max-width:1200px;margin:0 auto;padding:4.5rem 2rem;border-top:.5px solid var(--line)}
+.sec-eye{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem;display:flex;align-items:center;gap:8px}
+.sec-eye::before{content:'';width:16px;height:1px;background:var(--muted)}
+.sec-title{font-family:var(--fh);font-size:clamp(24px,3.2vw,42px);font-weight:800;line-height:1.0;letter-spacing:-.025em;margin-bottom:.8rem}
+.sec-title .acc{color:var(--accent)}.sec-title .gold{color:var(--gold)}.sec-title .purple{color:var(--purple)}
+.sec-intro{font-size:14px;color:var(--text2);line-height:1.78;max-width:700px;margin-bottom:2.5rem;font-weight:300}
+.sec-intro strong{color:var(--text);font-weight:500}
+.tab-bar{display:flex;gap:0;border-bottom:.5px solid var(--line2);margin-bottom:2rem}
+.tab-btn{font-family:var(--fh);font-size:12px;font-weight:700;letter-spacing:.04em;padding:10px 22px;border:none;background:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;text-transform:uppercase}
+.tab-btn:hover{color:var(--text2)}
+.tab-btn.active{color:var(--text);border-bottom-color:var(--accent)}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.esc-container{display:grid;gap:0}
+.esc-block{background:var(--bg2);border:.5px solid var(--line);border-radius:var(--r2);margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+.esc-block:hover{border-color:var(--line2)}
+.esc-header{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;padding:1.1rem 1.5rem;cursor:pointer;align-items:center;user-select:none}
+.esc-num{font-family:var(--fh);font-size:22px;font-weight:800;color:var(--accent);line-height:1;width:42px;flex-shrink:0}
+.esc-meta{display:flex;flex-direction:column;gap:3px}
+.esc-ttl{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--text);line-height:1.2}
+.esc-sub{font-size:11.5px;color:var(--muted)}
+.esc-time{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;padding:4px 10px;border:.5px solid var(--line2);border-radius:var(--r3)}
+.esc-body{padding:0 1.5rem 1.5rem;display:none;border-top:.5px solid var(--line)}
+.esc-block.active .esc-body{display:block}
+.esc-block.active .esc-header{border-bottom:.5px solid var(--line)}
+.esc-block.active{border-color:var(--accent)}
+.guion-section{margin-top:1.25rem}
+.gs-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:.65rem;display:flex;align-items:center;gap:8px}
+.gs-label::after{content:'';flex:1;height:.5px;background:var(--line)}
+.guion-line{background:var(--bg3);border-radius:var(--r);padding:.85rem 1.1rem;margin-bottom:.6rem}
+.guion-line .speaker{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:5px;display:block}
+.guion-line .speaker.inv{color:var(--gold)}
+.guion-line .speaker.dir{color:var(--teal)}
+.guion-line p{font-size:13.5px;color:var(--text2);line-height:1.75}
+.guion-line p em{color:var(--text);font-style:italic}
+.guion-line p strong{color:var(--text);font-weight:500}
+.broll-note{background:var(--bg4);border:.5px solid var(--amber);border-left:3px solid var(--amber);border-radius:0 var(--r) var(--r) 0;padding:.7rem 1rem;margin-bottom:.6rem;font-size:12px;color:var(--amber);line-height:1.6}
+.broll-note .broll-lbl{font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--amber);display:block;margin-bottom:3px;opacity:.7}
+.alert-box{background:rgba(192,57,43,.06);border:.5px solid var(--accent);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:.8rem 1.1rem;margin-bottom:.75rem;font-size:13.5px;color:var(--text);line-height:1.7}
+.alert-box .al-lbl{font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);display:block;margin-bottom:4px}
+.insight-box{background:rgba(201,168,76,.05);border:.5px solid var(--gold);border-left:3px solid var(--gold);border-radius:0 var(--r) var(--r) 0;padding:.8rem 1.1rem;margin-bottom:.75rem;font-size:13.5px;color:var(--text);line-height:1.7}
+.insight-box .in-lbl{font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);display:block;margin-bottom:4px}
+.mystery-box{background:rgba(46,139,101,.05);border:.5px solid var(--teal);border-left:3px solid var(--teal);border-radius:0 var(--r) var(--r) 0;padding:.8rem 1.1rem;margin-bottom:.75rem;font-size:13.5px;color:var(--text);line-height:1.7}
+.mystery-box .my-lbl{font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);display:block;margin-bottom:4px}
+.purple-box{background:rgba(139,109,201,.05);border:.5px solid var(--purple);border-left:3px solid var(--purple);border-radius:0 var(--r) var(--r) 0;padding:.8rem 1.1rem;margin-bottom:.75rem;font-size:13.5px;color:var(--text);line-height:1.7}
+.purple-box .pu-lbl{font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--purple);display:block;margin-bottom:4px}
+.dt{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1.75rem}
+.dt th{text-align:left;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.65rem 1rem;border-bottom:.5px solid var(--line2);background:var(--bg3)}
+.dt td{padding:.85rem 1rem;border-bottom:.5px solid var(--line);vertical-align:top;line-height:1.55;color:var(--text2)}
+.dt tr:hover td{background:var(--bg2)}
+.dt .tn{font-weight:500;color:var(--text)}
+.bar-wrap{display:flex;align-items:center;gap:8px}
+.bar-track{background:var(--bg4);height:5px;border-radius:3px;flex:1;overflow:hidden}
+.bar-fill{height:5px;border-radius:3px;transition:width 1.4s cubic-bezier(.4,0,.2,1);width:0}
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:var(--r3);border:.5px solid;line-height:1.5}
+.badge-red{border-color:rgba(192,57,43,.5);color:var(--accent);background:rgba(192,57,43,.08)}
+.badge-gold{border-color:rgba(201,168,76,.5);color:var(--gold);background:rgba(201,168,76,.07)}
+.badge-teal{border-color:rgba(46,139,101,.5);color:var(--teal);background:rgba(46,139,101,.07)}
+.badge-purple{border-color:rgba(139,109,201,.5);color:var(--purple);background:rgba(139,109,201,.07)}
+.kpi-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:2rem}
+.kpi-c{background:var(--bg2);padding:1.35rem 1.5rem}
+.kpi-n{font-family:var(--fh);font-size:32px;font-weight:800;line-height:1}
+.kpi-l{font-size:11.5px;color:var(--text2);margin-top:5px;line-height:1.45}
+.kpi-s{font-size:10.5px;color:var(--muted);margin-top:3px}
+.caso-g{display:grid;gap:10px}
+.caso{background:var(--bg2);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;transition:border-color .2s;cursor:pointer}
+.caso:hover{border-color:var(--line2)}
+.caso.active{border-color:var(--accent)}
+.caso-h{display:grid;grid-template-columns:90px 1fr auto;gap:1rem;padding:1.1rem 1.4rem;align-items:start}
+.caso-date{font-family:var(--fh);font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.05em;padding-top:2px}
+.caso-title{font-size:14px;font-weight:500;color:var(--text);line-height:1.3;margin-bottom:3px}
+.caso-loc{font-size:11.5px;color:var(--muted)}
+.caso-body{padding:0 1.4rem 1.4rem;display:none;border-top:.5px solid var(--line)}
+.caso.active .caso-body{display:block}
+.card-g{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:1.5rem}
+.card-g.g3{grid-template-columns:repeat(3,1fr)}
+.cc{background:var(--bg2);padding:1.4rem 1.6rem}
+.cc-n{font-family:var(--fh);font-size:16px;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.cc-s{font-size:11.5px;color:var(--muted);margin-bottom:1rem;padding-bottom:.75rem;border-bottom:.5px solid var(--line)}
+.cc-row{display:flex;justify-content:space-between;align-items:flex-start;padding:5px 0;border-bottom:.5px solid var(--line);font-size:12.5px;gap:8px}
+.cc-row:last-child{border-bottom:none}
+.cc-k{color:var(--muted)}.cc-v{font-weight:500;color:var(--text);text-align:right;max-width:55%}
+.candados-wrap{display:grid;gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:2rem}
+.candado{background:var(--bg2);transition:background .15s;cursor:pointer}
+.candado:hover{background:var(--bg3)}
+.candado.active{background:var(--bg3)}
+.candado-h{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:1rem;padding:1.1rem 1.4rem}
+.candado-icon{font-family:var(--fh);font-size:24px;font-weight:800;color:var(--accent);line-height:1;text-align:center}
+.candado-icon.unlocked{color:var(--teal)}
+.candado-ttl{font-size:14px;font-weight:500;color:var(--text)}
+.candado-sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+.candado-body{padding:0 1.4rem 1.4rem;display:none;border-top:.5px solid var(--line)}
+.candado.active .candado-body{display:block}
+.micro-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:2rem}
+.mc{background:var(--bg2);padding:1.4rem 1.5rem;transition:background .15s}
+.mc:hover{background:var(--bg3)}
+.mc-idx{font-family:var(--fh);font-size:11px;font-weight:700;color:var(--accent);margin-bottom:.35rem}
+.mc-ttl{font-family:var(--fh);font-size:15px;font-weight:700;color:var(--text);margin-bottom:.4rem;line-height:1.2}
+.mc-row{display:flex;justify-content:space-between;align-items:flex-start;padding:4px 0;border-bottom:.5px solid var(--line);font-size:12px;gap:6px}
+.mc-row:last-child{border-bottom:none}
+.mc-k{color:var(--muted)}.mc-v{font-weight:500;color:var(--text2);text-align:right;max-width:62%}
+.mc-hook{background:var(--bg4);border-left:2px solid var(--accent);padding:.55rem .85rem;margin-top:.75rem;border-radius:0 var(--r) var(--r) 0;font-size:12.5px;color:var(--text);font-style:italic;line-height:1.6}
+.mc-hook .lbl{font-style:normal;font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);display:block;margin-bottom:3px}
+.cal-g{display:grid;gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:2rem}
+.cal-row{display:grid;grid-template-columns:120px 90px 1fr 1fr;gap:0;background:var(--bg2);transition:background .15s}
+.cal-row:hover{background:var(--bg3)}
+.cal-row.header{background:var(--bg3)}
+.cal-cell{padding:.85rem 1rem;border-right:.5px solid var(--line);font-size:12.5px}
+.cal-cell:last-child{border-right:none}
+.cal-row.header .cal-cell{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:.6rem 1rem}
+.cal-day{font-weight:500;color:var(--text)}
+.cal-hora{color:var(--accent);font-weight:500}
+.cal-obj{font-size:12px;color:var(--muted);line-height:1.5}
+.legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:2rem}
+.legal-col{background:var(--bg2);padding:1.5rem 1.75rem}
+.legal-col-h{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:.5px solid var(--line)}
+.legal-col-ico{font-size:20px}
+.legal-col-ttl{font-family:var(--fh);font-size:17px;font-weight:700}
+.legal-col-ttl.red{color:var(--accent)}
+.legal-col-ttl.blue{color:#4a7fbf}
+.legal-row{display:flex;flex-direction:column;gap:2px;padding:8px 0;border-bottom:.5px solid var(--line)}
+.legal-row:last-child{border-bottom:none}
+.legal-k{font-size:10.5px;font-weight:500;text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.legal-v{font-size:13.5px;color:var(--text2);line-height:1.55}
+.legal-v strong{color:var(--text);font-weight:500}
+.steps{display:grid;gap:0}
+.step{display:flex;gap:1.5rem;padding:1.35rem 0;border-bottom:.5px solid var(--line);align-items:flex-start}
+.step:last-child{border-bottom:none}
+.step-n{font-family:var(--fh);font-size:30px;font-weight:800;color:var(--accent);line-height:1;flex-shrink:0;width:40px}
+.step-t{font-weight:500;font-size:14px;color:var(--text);margin-bottom:4px}
+.step-d{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:5px}
+.step-tl{font-size:11.5px;color:var(--teal);font-weight:500}
+.is-matrix{display:grid;gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:2rem}
+.is-row{display:grid;grid-template-columns:200px 1fr 90px;gap:0;background:var(--bg2);transition:background .15s}
+.is-row:hover{background:var(--bg3)}
+.is-row.header{background:var(--bg3)}
+.is-cell{padding:.9rem 1.1rem;border-right:.5px solid var(--line);font-size:13px;line-height:1.55}
+.is-cell:last-child{border-right:none}
+.is-row.header .is-cell{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:.65rem 1.1rem}
+.is-trigger{font-weight:500;color:var(--text)}
+.is-mec{color:var(--text2)}
+.pp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:2rem}
+.pp-card{background:var(--bg2);padding:1.3rem 1.5rem;transition:background .15s}
+.pp-card:hover{background:var(--bg3)}
+.pp-idx{font-family:var(--fh);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem}
+.pp-ttl{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--text);margin-bottom:.6rem;line-height:1.2}
+.pp-def{font-size:12.5px;color:var(--muted);margin-bottom:.75rem;line-height:1.55}
+.pp-app{font-size:12.5px;color:var(--text2);line-height:1.6;padding-top:.75rem;border-top:.5px solid var(--line)}
+.pp-app strong{color:var(--text);font-weight:500}
+.funnel{display:grid;gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:2rem}
+.funnel-step{display:flex;align-items:flex-start;gap:1.25rem;background:var(--bg2);padding:1.1rem 1.4rem;transition:background .15s;border-bottom:.5px solid var(--line)}
+.funnel-step:last-child{border-bottom:none}
+.funnel-step:hover{background:var(--bg3)}
+.fn-num{font-family:var(--fh);font-size:26px;font-weight:800;color:var(--purple);line-height:1;width:36px;flex-shrink:0}
+.fn-t{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:3px}
+.fn-d{font-size:12.5px;color:var(--text2);line-height:1.6}
+.fn-ex{font-size:12px;color:var(--purple);font-style:italic;margin-top:4px}
+.ref-filter{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
+.rfbtn{font-size:11.5px;font-weight:500;padding:5px 13px;border-radius:var(--r3);border:.5px solid var(--line2);background:var(--bg2);color:var(--muted);cursor:pointer;transition:all .15s;font-family:var(--fb)}
+.rfbtn:hover{background:var(--bg3);color:var(--text)}
+.rfbtn.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+.refs-list{display:grid;gap:8px}
+.ref-entry{background:var(--bg2);border:.5px solid var(--line);border-radius:var(--r);padding:1.05rem 1.3rem;transition:border-color .15s}
+.ref-entry:hover{border-color:var(--line2)}
+.ref-entry.hidden{display:none}
+.ref-cat{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:var(--r3);margin-bottom:6px}
+.ref-cat.ley{background:rgba(192,57,43,.1);color:var(--accent);border:.5px solid rgba(192,57,43,.2)}
+.ref-cat.stat{background:rgba(74,127,191,.1);color:#4a7fbf;border:.5px solid rgba(74,127,191,.2)}
+.ref-cat.acad{background:rgba(201,168,76,.1);color:var(--gold);border:.5px solid rgba(201,168,76,.2)}
+.ref-cat.prensa{background:rgba(46,139,101,.1);color:var(--teal);border:.5px solid rgba(46,139,101,.2)}
+.ref-cat.inst{background:rgba(120,120,100,.1);color:var(--muted2);border:.5px solid var(--line2)}
+.ref-text{font-size:13px;color:var(--text2);line-height:1.85}
+.ref-url{color:#4a7fbf;text-decoration:none;word-break:break-all;font-family:monospace;font-size:11.5px}
+.ref-url:hover{color:var(--accent);text-decoration:underline}
+.monologue{background:var(--bg2);border:.5px solid var(--line);border-radius:var(--r2);padding:2rem 2.5rem;position:relative;overflow:hidden}
+.monologue::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--accent),var(--gold))}
+.mono-eyebrow{font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.mono-text{font-size:16px;color:var(--text2);line-height:2;font-weight:300;font-style:italic}
+.mono-text strong{color:var(--text);font-weight:500;font-style:normal}
+.mono-text em{color:var(--gold)}
+.mono-close{font-family:var(--fh);font-size:clamp(18px,2.5vw,26px);font-weight:800;color:var(--text);margin-top:1.5rem;line-height:1.2;letter-spacing:-.02em}
+.mono-close .acc{color:var(--accent)}
+footer{border-top:.5px solid var(--line);padding:3rem 2rem;margin-top:2rem}
+.foot-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.foot-logo{font-family:var(--fh);font-size:13px;font-weight:800;color:var(--muted)}
+.foot-logo .vc{color:var(--accent)}
+.foot-note{font-size:11.5px;color:var(--muted);max-width:500px;line-height:1.6}
+@keyframes fi{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.fd{animation:fi .5s ease both}
+.caret{font-size:11px;color:var(--muted);transition:transform .2s;display:inline-block;margin-left:4px}
+.open-caret{transform:rotate(180deg)}
+.tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:.75rem}
+.tc{font-family:var(--fh);font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:3px 8px;border-radius:var(--r3);border:.5px solid var(--line2);color:var(--muted)}
+.tc.hot{border-color:var(--accent);color:var(--accent);background:rgba(192,57,43,.07)}
+.tc.gold{border-color:var(--gold);color:var(--gold)}
+.tc.teal{border-color:var(--teal);color:var(--teal)}
+.tc.purple{border-color:var(--purple);color:var(--purple)}
+@media(max-width:800px){
+  .hero-grid,.card-g,.card-g.g3,.legal-grid,.kpi-g{grid-template-columns:1fr}
+  .esc-header{grid-template-columns:auto 1fr}
+  .esc-time{display:none}
+  nav .nav-links{display:none}
+  .caso-h{grid-template-columns:70px 1fr}
+  .cal-row,.is-row{grid-template-columns:1fr}
+  .micro-g,.pp-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo"><span class="vc">VICIOCULTO</span><span style="color:var(--line2);font-weight:300;margin:0 4px">·</span><span style="color:var(--muted2);font-weight:400;font-size:11px">Dashboard de Producción 2026</span></div>
+    <div class="nav-links">
+      <a class="nl active" href="#hook">Hook</a>
+      <a class="nl" href="#dataroom">Data Room</a>
+      <a class="nl" href="#casos">Casos</a>
+      <a class="nl" href="#blindaje">Blindaje</a>
+      <a class="nl" href="#issocial">Ing. Social</a>
+      <a class="nl" href="#cierre">Cierre</a>
+      <a class="nl" href="#bufalo">Búfalo</a>
+      <a class="nl" href="#referencias">Referencias</a>
+    </div>
+  </div>
+</nav>
+<div class="hero fd">
+  <div class="hero-bg-txt">VC</div>
+  <div class="hero-podcast-tag"><span class="dot"></span><span class="vc-name">VICIOCULTO</span><span style="color:var(--muted);margin:0 4px">·</span><span>Temporada 2026 · Episodio Especial</span></div>
+  <div class="hero-title"><span class="acc">Despojos</span> &amp;<br><span class="acc">Desalojos</span><br><span class="dim">en México</span></div>
+  <div class="hero-grid">
+    <div>
+      <p class="hero-desc">Dashboard de producción para <strong>Vicioculto</strong> — programa de <strong>25–30 minutos</strong> de alta retención algorítmica. Guion en dos formatos separados: <strong>escaleta de podcast con invitado</strong> y <strong>guion documental en solitario</strong>. El tema que el sector inmobiliario no quiere que discutas en cámara.</p>
+      <div class="tag-row"><span class="htag hot">ROA · Retención Algorítmica</span><span class="htag gold">Marco Legal 2026</span><span class="htag purple">Ingeniería Social</span><span class="htag">CDMX · EdoMex</span></div>
+    </div>
+    <div>
+      <div class="hero-kpi">
+        <div class="hkpi"><div class="hkpi-n danger">1.5<sup>%</sup></div><div class="hkpi-l">Tasa de restitución inmuebles despojados CDMX 2024. La cifra más brutal.</div></div>
+        <div class="hkpi"><div class="hkpi-n warn">28,364</div><div class="hkpi-l">Denuncias nacionales por despojo 2024. Récord documentado.</div></div>
+        <div class="hkpi"><div class="hkpi-n danger">82.8<sup>%</sup></div><div class="hkpi-l">Tasa de impunidad. Solo 17.2% con resultado positivo (ENVIPE 2023).</div></div>
+        <div class="hkpi"><div class="hkpi-n warn">25<sup>años</sup></div><div class="hkpi-l">Pena máxima despojo EdoMex tras Decreto 128 (julio 2025).</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="htags"><span class="htag hot">Art. 395 CPF</span><span class="htag hot">Art. 1017 CNPCF</span><span class="htag">Caso Carlota N · Chalco</span><span class="htag">República de Cuba 11 · CDMX</span><span class="htag gold">Factor FIFA 2026 · SCJN Art. 60</span><span class="htag purple">IS Aplicada · Puntos de Presión</span></div>
+</div>
+
+<!-- SECCIÓN 1: HOOK -->
+<div class="wrap fd" id="hook">
+  <div class="sec-eye">01 · Reingeniería de los primeros 60 segundos</div>
+  <div class="sec-title">The Hook &amp;<br><span class="acc">El Crimen en Pantalla</span></div>
+  <div class="sec-intro"><strong>Regla de oro:</strong> el espectador decide en los primeros 15 segundos. Prohibido abrir con saludos o historia. La escaleta abre en la escena del crimen. Selecciona el formato.</div>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('hook','escaleta',this)">📋 Escaleta · Podcast con Invitado</button>
+    <button class="tab-btn" onclick="switchTab('hook','documental',this)">🎬 Guion Documental · Solo</button>
+  </div>
+  <div id="hook-escaleta" class="tab-panel active">
+    <div class="esc-container">
+      <div class="esc-block" id="bloque-01">
+        <div class="esc-header" onclick="toggleEsc('bloque-01')">
+          <div class="esc-num">01</div>
+          <div class="esc-meta"><div class="esc-ttl">THE HOOK · La Paradoja Brutal <span class="caret" id="car-bloque-01">▾</span></div><div class="esc-sub">In medias res · Mención orgánica de Vicioculto · Open Loop activo</div></div>
+          <div class="esc-time">0:00 – 1:00</div>
+        </div>
+        <div class="esc-body" id="body-bloque-01">
+          <div class="alert-box" style="margin-top:1.25rem"><span class="al-lbl">⚡ Sin preámbulo — primer fotograma es conflicto puro</span>La presentación de Vicioculto va DESPUÉS de la paradoja. El nombre se planta cuando el espectador ya está enganchado.</div>
+          <div class="guion-line"><span class="speaker dir">CONDUCTOR — ON CAMERA · PLANO CERRADO · SIN CORTINILLA</span><p>Tienes escrituras notariales. Folio real del Registro Público. Predial al corriente. El inmueble es tuyo. Llegas un martes por la mañana y hay candado nuevo en la puerta. Hay gente adentro. Llamas al 911. El policía te mira las escrituras y te dice: <em>"Señor, para entrar necesita una orden judicial. Si fuerza la entrada, lo detengo a usted."</em> <strong>El delincuente, ante la ley en ese momento, eres tú.</strong></p></div>
+          <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:10 seg máx.</span>Fachada con candado + letrero "SE OCUPA". Sonido: cerradura metálica. Regreso a talking head. Máx. 12 seg continuos de busto parlante.</div>
+          <div class="guion-line"><span class="speaker dir">CONDUCTOR — PRESENTA VICIOCULTO ORGÁNICAMENTE</span><p>Eso pasó en la Narvarte. Pasó en el Centro Histórico. Y está pasando ahora mismo mientras ves esto. Soy [nombre], y en <strong>Vicioculto</strong> hablamos de exactamente este tipo de realidades que el sistema prefiere que no entiendas. Hoy tengo conmigo a un abogado especialista en derecho inmobiliario, y vamos a desmantelar esto por completo. Hay <strong>tres candados de blindaje</strong> que el 95% de los inversionistas en México no conoce. El tercero es el único que te salva de ir a prisión por intentar recuperar tu propia casa.</p></div>
+          <div class="mystery-box"><span class="my-lbl">🔐 Open Loop activo · Vicioculto plantado</span>El nombre aparece DESPUÉS de la paradoja. Primera asociación emocional: Vicioculto = verdades que duelen. El misterio de los 3 candados se resuelve en el minuto 23:00.</div>
+          <div class="guion-line"><span class="speaker inv">INVITADO — primera intervención</span><p>Y no es un caso aislado. En 2024, la Ciudad de México tuvo 3,643 carpetas por despojo. De esas, el sistema restituyó el inmueble en exactamente 55 casos. El uno punto cinco por ciento. El 98.5% de los dueños legítimos se quedan afuera.</p></div>
+          <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:08 seg</span>Gráfico animado: barra roja 98.5% vs. línea blanca 1.5%. Sonido: tono grave de alarma. Zoom al 1.5%.</div>
+          <div class="tag-row"><span class="tc hot">Paradoja Legal</span><span class="tc hot">In Medias Res</span><span class="tc">Art. 395 CPF</span><span class="tc teal">Open Loop · 3 Candados</span><span class="tc purple">Vicioculto Planted</span></div>
+        </div>
+      </div>
+      <div class="esc-block" id="bloque-02">
+        <div class="esc-header" onclick="toggleEsc('bloque-02')">
+          <div class="esc-num">02</div>
+          <div class="esc-meta"><div class="esc-ttl">Despojo vs. Desalojo: La Distinción que Vale Millones <span class="caret" id="car-bloque-02">▾</span></div><div class="esc-sub">Marco técnico-conversacional · Formato fiscal · Conductor pregunta, invitado destruye mitos</div></div>
+          <div class="esc-time">1:00 – 3:00</div>
+        </div>
+        <div class="esc-body" id="body-bloque-02">
+          <div class="legal-grid" style="margin-top:1.25rem">
+            <div class="legal-col">
+              <div class="legal-col-h"><span class="legal-col-ico">🔴</span><span class="legal-col-ttl red">Despojo</span></div>
+              <div class="legal-row"><span class="legal-k">Naturaleza</span><span class="legal-v"><strong>Delito penal.</strong> Alguien toma lo que no es suyo.</span></div>
+              <div class="legal-row"><span class="legal-k">Artículo</span><span class="legal-v">Art. 395, Código Penal Federal</span></div>
+              <div class="legal-row"><span class="legal-k">Pena federal</span><span class="legal-v">3 meses a 5 años + multa</span></div>
+              <div class="legal-row"><span class="legal-k">Pena CDMX</span><span class="legal-v">5 a 10 años (Código Penal local)</span></div>
+              <div class="legal-row"><span class="legal-k">Pena EdoMex</span><span class="legal-v"><strong style="color:var(--accent)">Hasta 25 años 6 meses + 1,500 días multa</strong> (Decreto 128, jul. 2025)</span></div>
+              <div class="legal-row"><span class="legal-k">Vía de solución</span><span class="legal-v">Denuncia penal · Fiscalía · Resultado real: 1.5%</span></div>
+              <div class="legal-row"><span class="legal-k">Riesgo inversión</span><span class="legal-v"><strong>Muy alto:</strong> título contaminado, litigio activo</span></div>
+            </div>
+            <div class="legal-col">
+              <div class="legal-col-h"><span class="legal-col-ico">🔵</span><span class="legal-col-ttl blue">Desalojo</span></div>
+              <div class="legal-row"><span class="legal-k">Naturaleza</span><span class="legal-v"><strong>Procedimiento civil/judicial.</strong> La autoridad ordena salir.</span></div>
+              <div class="legal-row"><span class="legal-k">Artículo</span><span class="legal-v">Art. 1017, CNPCF (2023)</span></div>
+              <div class="legal-row"><span class="legal-k">Requisito</span><span class="legal-v">Sentencia judicial firme. Solo un juez puede ordenarlo.</span></div>
+              <div class="legal-row"><span class="legal-k">Protocolo CDMX</span><span class="legal-v">Aviso previo · Mesas conciliatorias · Realojo ≤ 15 km</span></div>
+              <div class="legal-row"><span class="legal-k">Art. 60 CDMX</span><span class="legal-v">Derechos de desalojados. Debate SCJN (AI 73/2019)</span></div>
+              <div class="legal-row"><span class="legal-k">Vía de solución</span><span class="legal-v">Demanda civil · Meses a años de proceso</span></div>
+              <div class="legal-row"><span class="legal-k">Riesgo inversión</span><span class="legal-v"><strong>Medio:</strong> carga procesal, demoras, incertidumbre</span></div>
+            </div>
+          </div>
+          <div class="guion-line"><span class="speaker dir">CONDUCTOR</span><p>A ver, hablemos de plata de verdad. Despojo y desalojo no son sinónimos. Son, en muchos sentidos, <em>opuestos jurídicos</em>. Pero el mercado los mezcla, los medios los confunden, y esa confusión le ha costado patrimonios enteros a gente que creyó que estaba protegida.</p></div>
+          <div class="guion-line"><span class="speaker inv">INVITADO</span><p><strong>El despojo es el crimen.</strong> El desalojo es, en teoría, el remedio. El problema es que ese remedio tarda meses, a veces años, y en México, el 82.8% de las veces nunca llega. La brecha entre el crimen y el remedio es exactamente donde operan los sindicatos del despojo.</p></div>
+          <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:10 seg</span>Split screen: "DESPOJO" rojo / "DESALOJO" azul. Artículo sobrepuesto con marcador digital fosforescente. Sonido: sello notarial.</div>
+          <div class="alert-box"><span class="al-lbl">🎯 Pico de dopamina #1 — inyectar aquí</span>"La duplicidad de folios reales en el Registro Público no es un error de sistema. Es una brecha que se explota deliberadamente. En 2025, la Fiscalía de la CDMX documentó casos donde el mismo inmueble tenía dos escrituras con números distintos. Las dos eran legales. Las dos eran falsas."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="hook-documental" class="tab-panel">
+    <div class="insight-box"><span class="in-lbl">📖 Guion documental — voz única · Sin invitado</span>Vicioculto se presenta antes del minuto 1 como ancla editorial, una vez que el conflicto ya está activo. El presentador es el único fiscal, el único narrador y la única voz de autoridad.</div>
+    <div class="guion-line"><span class="speaker dir">PRESENTADOR — PLANO CERRADO · SIN MÚSICA · SIN CORTINILLA</span><p>Imagínate esto. Tienes escrituras notariales. Folio real del Registro Público. Predial pagado. El inmueble es tuyo, <em>técnicamente hablando</em>. Llegas un martes por la mañana. Hay candado nuevo en la puerta. Hay gente adentro. Llamas al 911. El policía te mira las escrituras. Y te dice: <em>"Señor, para entrar necesita una orden judicial. Si fuerza la entrada, lo detengo a usted."</em> <strong>El delincuente, ante la ley en ese momento, eres tú.</strong> <em>[pausa de 3 segundos]</em></p></div>
+    <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:10 seg · silencio total</span>Fachada con candado. Letrero "SE OCUPA". Sin música. Sin sonido. Regreso a presentador.</div>
+    <div class="guion-line"><span class="speaker dir">PRESENTADOR — PRESENTA VICIOCULTO</span><p>Eso no es ficción. Eso pasó en la Colonia Narvarte. En el Centro Histórico. Está pasando ahora mientras ves esto. Bienvenido a <strong>Vicioculto</strong> — el espacio donde miramos de frente las cosas que el sistema prefiere que no comprendas del todo. Hoy: el despojo y el desalojo inmobiliario en México. Dos palabras que se confunden, y que cuando no las distingues, pueden costarte todo lo que tienes.</p></div>
+    <div class="mystery-box"><span class="my-lbl">🔐 Open Loop · Misterio activo</span>"Hay tres candados de blindaje que el 95% de los inversionistas en México ignora. El primero te lo doy ahora. El segundo, a mitad del episodio. Y el tercero — el único que te salva de ir a la cárcel por intentar entrar a tu propia casa — al final."</div>
+    <div class="guion-line"><span class="speaker dir">PRESENTADOR — DISTINCIÓN CONCEPTUAL</span><p>Para entender todo lo que vamos a ver hoy, necesitas distinguir dos figuras que el mercado trata como sinónimos. <strong>El despojo es el crimen:</strong> la ocupación ilegal de un inmueble ajeno, tipificada en el artículo 395 del Código Penal Federal. <strong>El desalojo es el remedio:</strong> el procedimiento judicial del artículo 1017 del Código Nacional de Procedimientos Civiles. La diferencia parece clara en papel. En la práctica, la línea se borra con impunidad y burocracia.</p></div>
+    <div class="guion-line"><span class="speaker dir">PRESENTADOR — PICO DE DOPAMINA #1</span><p>Antes de seguir: el número que define todo lo que vas a escuchar hoy. En 2024, se presentaron 3,643 carpetas por despojo en la Ciudad de México. De esas, las autoridades lograron restituir el inmueble en exactamente <strong>55 casos.</strong> El uno punto cinco por ciento. <em>Eso no es un sistema que falla. Es un sistema que funciona — solo que no para ti.</em></p></div>
+    <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:12 seg · impacto total</span>Gráfico a pantalla completa. Barra roja: 98.5%. Línea blanca: 1.5%. Pausa 2 seg. Grave sostenido. Corte a negro 1 seg. Regreso a presentador.</div>
+  </div>
+</div>
+
+<!-- SECCIÓN 2: DATA ROOM -->
+<div class="wrap" id="dataroom">
+  <div class="sec-eye">02 · Data Room secuencial y Matriz de Impunidad · 3:00 – 10:00</div>
+  <div class="sec-title">El Sistema<br><span class="acc">Está Roto por Diseño</span></div>
+  <div class="sec-intro">Cada estadística se acompaña de una consecuencia económica concreta para el inversionista. Los números no se listan: se narran.</div>
+  <div class="kpi-g">
+    <div class="kpi-c"><div class="kpi-n" style="color:var(--accent)">4,437</div><div class="kpi-l">Carpetas CDMX 2021</div><div class="kpi-s">Pico histórico</div></div>
+    <div class="kpi-c"><div class="kpi-n" style="color:var(--gold)">3,890</div><div class="kpi-l">Carpetas CDMX 2022</div></div>
+    <div class="kpi-c"><div class="kpi-n" style="color:var(--gold)">3,800</div><div class="kpi-l">Carpetas CDMX 2023</div></div>
+    <div class="kpi-c"><div class="kpi-n" style="color:var(--accent)">3,643</div><div class="kpi-l">Carpetas CDMX 2024</div><div class="kpi-s">55 restituciones = 1.5%</div></div>
+    <div class="kpi-c"><div class="kpi-n" style="color:var(--teal)">4,936</div><div class="kpi-l">Denuncias EdoMex 2024</div><div class="kpi-s">Récord absoluto</div></div>
+    <div class="kpi-c"><div class="kpi-n" style="color:var(--accent)">+103<sup>%</sup></div><div class="kpi-l">Alza denuncias CDMX</div><div class="kpi-s">Enero 2026 vs. 2025</div></div>
+  </div>
+  <table class="dt">
+    <thead><tr><th>Año</th><th>CDMX</th><th>EdoMex</th><th>Nacional</th><th>Restituciones CDMX</th><th>Impunidad</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tn">2022</span></td><td>3,890<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:88%"></div></div></div></td><td>4,752<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:90%"></div></div></div></td><td>~26,000 est.</td><td><span class="badge badge-red">~115 (2.9%)</span></td><td><span class="badge badge-red">~80%</span></td></tr>
+      <tr><td><span class="tn">2023</span></td><td>3,800<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:86%"></div></div></div></td><td>4,886<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:93%"></div></div></div></td><td>~27,100 est.</td><td><span class="badge badge-red">~90 (2.4%)</span></td><td><span class="badge badge-red">82.8%</span></td></tr>
+      <tr><td><span class="tn">2024</span></td><td>3,643<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:82%"></div></div></div></td><td>4,936<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:100%"></div></div></div></td><td>28,364 <span class="badge badge-red">Récord</span></td><td><span class="badge badge-red">55 (1.5%) 🔴</span></td><td><span class="badge badge-red">&gt;82%</span></td></tr>
+      <tr><td><span class="tn">2025</span></td><td>~3,800 est.<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:86%"></div></div></div></td><td>~5,500 est.<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:100%"></div></div></div></td><td>&gt;29,000 proy.</td><td><span class="badge badge-teal">430 acum. (Gabinete)</span></td><td><span class="badge badge-gold">&gt;70% est.</span></td></tr>
+      <tr><td><span class="tn">2026 H1</span></td><td>+103% ene.<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:95%"></div></div></div></td><td>Tendencia rec.</td><td>&gt;30,000 proy.</td><td><span class="badge badge-gold">En proceso</span></td><td><span class="badge badge-red">Por confirmar</span></td></tr>
+    </tbody>
+  </table>
+  <div class="sec-eye" style="margin-top:2rem">Anatomía del fraude</div>
+  <div class="sec-title" style="font-size:clamp(18px,2.3vw,28px);margin-bottom:1rem">Sindicatos del Despojo:<br><span class="gold">Cómo Operan en 2026</span></div>
+  <div class="tab-bar"><button class="tab-btn active" onclick="switchTab('sind','escaleta',this)">📋 Escaleta Podcast</button><button class="tab-btn" onclick="switchTab('sind','documental',this)">🎬 Guion Documental</button></div>
+  <div id="sind-escaleta" class="tab-panel active">
+    <div class="guion-line"><span class="speaker dir">CONDUCTOR</span><p>Esto es lo que las agencias inmobiliarias te ocultan en las letras chiquitas. ¿Qué es exactamente un sindicato del despojo?</p></div>
+    <div class="guion-line"><span class="speaker inv">INVITADO</span><p>Son organizaciones con roles definidos: un prospector, un notario o abogado coludido que fabrica los documentos, y ejecutores que hacen la ocupación. El Universal los documentó en mayo de 2025 operando en CDMX, EdoMex e Hidalgo. Tienen estructura corporativa.</p></div>
+    <div class="card-g g3" style="margin-top:1rem">
+      <div class="cc"><div class="cc-n" style="color:var(--accent)">Fase 1 · Selección</div><div class="cc-s">Prospección del objetivo</div><div class="cc-row"><span class="cc-k">Targets</span><span class="cc-v">Adultos mayores, herederos con disputas, inmuebles desocupados</span></div><div class="cc-row"><span class="cc-k">Método</span><span class="cc-v">Registro Público + padrones de predial moroso</span></div><div class="cc-row"><span class="cc-k">Herramienta</span><span class="cc-v">Duplicidad de folios reales</span></div></div>
+      <div class="cc"><div class="cc-n" style="color:var(--gold)">Fase 2 · Ocupación</div><div class="cc-s">Documentación falsa y entrada</div><div class="cc-row"><span class="cc-k">Suplantación</span><span class="cc-v">Identidad del propietario + escritura con notario coludido</span></div><div class="cc-row"><span class="cc-k">Ocupación</span><span class="cc-v">Madrugada · Cambio de cerraduras · Inquilinos pagadores</span></div><div class="cc-row"><span class="cc-k">Extracción</span><span class="cc-v">Juicio simulado en juzgado foráneo</span></div></div>
+      <div class="cc"><div class="cc-n" style="color:var(--teal)">Fase 3 · Blindaje</div><div class="cc-s">Paralización procesal</div><div class="cc-row"><span class="cc-k">Amparo</span><span class="cc-v">Amparos sucesivos durante meses</span></div><div class="cc-row"><span class="cc-k">Desgaste</span><span class="cc-v">$80,000–$400,000 MXN anuales en abogados para el dueño</span></div><div class="cc-row"><span class="cc-k">Salida</span><span class="cc-v">Venta forzada o abandono del litigio</span></div></div>
+    </div>
+  </div>
+  <div id="sind-documental" class="tab-panel">
+    <div class="guion-line"><span class="speaker dir">PRESENTADOR</span><p>Para entender por qué el 82.8% de los casos termina en impunidad, hay que entender quién está del otro lado. En México existe lo que los especialistas llaman informalmente el <em>sindicato del despojo</em>. El Universal documentó en mayo de 2025 que hay organizaciones con roles definidos en CDMX, EdoMex e Hidalgo con sofisticación que rivaliza con cualquier despacho de abogados. <strong>Y de hecho, algunos tienen abogados adentro.</strong></p></div>
+    <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:08 seg</span>Mapa de calor: Narvarte, Del Valle, Doctores, Tepito, Iztapalapa. Puntos rojos parpadeando. Sonido: estática de radio policial.</div>
+    <div class="guion-line"><span class="speaker dir">PRESENTADOR — continúa</span><p>El modelo opera en tres fases: selección del objetivo, ocupación con documentos falsos en la madrugada, y blindaje procesal mediante amparos sucesivos mientras el dueño legítimo gasta entre 80 y 400 mil pesos anuales en abogados. <em>Para un sistema que procesa solo el 1.5% de los casos exitosamente, el tiempo es el arma más efectiva que tiene el despojador.</em></p></div>
+  </div>
+</div>
+<!-- SECCIÓN 3: CASOS ANCLA -->
+<div class="wrap" id="casos">
+  <div class="sec-eye">03 · Storytelling accionable · Casos ancla · 10:00 – 18:00</div>
+  <div class="sec-title">Cuando el Sistema<br><span class="acc">Falló en Cámara</span></div>
+  <div class="sec-intro">Los casos no se narran como notas periodísticas. Se diseccionan como <strong>estudios de riesgo de inversión</strong> y detonadores de indignación legítima. Haz clic en cada caso para ver el guion en ambos formatos.</div>
+  <div class="caso-g">
+    <div class="caso" id="caso-carlota">
+      <div class="caso-h" onclick="toggleCaso('caso-carlota')">
+        <div class="caso-date">Abr 2025<br>→ Feb 2026</div>
+        <div><div class="caso-title">Caso Carlota N · Chalco, Estado de México</div><div class="caso-loc">Unidad Habitacional Ex Hacienda de Guadalupe · Sentencia feb. 2026</div><div class="tag-row"><span class="tc hot">Decreto 128 · 25 años</span><span class="tc gold">Reforma legislativa</span><span class="tc teal">Sentencia feb. 2026</span></div></div>
+        <span class="caret" id="car-caso-carlota">▾</span>
+      </div>
+      <div class="caso-body" id="body-caso-carlota">
+        <div class="tab-bar" style="margin-top:1.25rem"><button class="tab-btn active" onclick="switchTab('carlota','escaleta',this)">📋 Escaleta Podcast</button><button class="tab-btn" onclick="switchTab('carlota','documental',this)">🎬 Guion Documental</button></div>
+        <div id="carlota-escaleta" class="tab-panel active">
+          <div class="alert-box"><span class="al-lbl">⚡ Pico de dopamina #2 · Máxima indignación · min 10:30</span>Presenta a Carlota antes que al Decreto. La ley como consecuencia de la persona, no al revés.</div>
+          <div class="guion-line"><span class="speaker dir">CONDUCTOR</span><p>Abril 2025. Chalco. Hay algo que quiero que escuches antes de que yo explique qué pasó legalmente.</p></div>
+          <div class="guion-line"><span class="speaker inv">INVITADO</span><p>Doña Carlota tiene 73 años. Lleva semanas denunciando que un grupo ocupa parte de su propiedad. La Fiscalía no actuó. Los invasores lo sabían. Doña Carlota también lo sabía. Entonces ella y sus hijos tomaron un arma. Dos personas murieron. Un menor resultó herido. Doña Carlota quedó detenida. Y México se partió en dos.</p></div>
+          <div class="guion-line"><span class="speaker dir">CONDUCTOR — GIRO ANALÍTICO</span><p>Pero lo que me importa en Vicioculto no es el debate moral. Es lo que pasó después. El Congreso de EdoMex aprobó el Decreto 128 en julio de 2025: <strong>25 años con 6 meses, 1,500 días multa.</strong> Para una conducta que el CPF castiga con máximo 5 años. En febrero de 2026, el juez condenó a 6 años al despojador. La hija de Carlota recuperó el inmueble. Esto sí funcionó. Una vez.</p></div>
+          <div class="insight-box"><span class="in-lbl">💡 Insight de inversión · EdoMex 2026</span>El Decreto 128 cambia el cálculo de riesgo en EdoMex. La pena existe. Los fiscales que la apliquen consistentemente, no necesariamente. Pero la señal política es clara: EdoMex es ahora la jurisdicción más severa del país para este delito.</div>
+        </div>
+        <div id="carlota-documental" class="tab-panel">
+          <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:10 seg · antes de comenzar</span>Escala de grises. Imágenes de prensa de Chalco. Texto: "El Estado falló primero." Silencio 2 seg. Percusión grave.</div>
+          <div class="guion-line"><span class="speaker dir">PRESENTADOR</span><p>Abril de 2025. Doña Carlota tiene 73 años. Vive en Chalco. Un grupo lleva semanas ocupando parte de su propiedad. Ella ha denunciado. La Fiscalía no ha hecho nada. <em>Entonces ella y sus hijos agarran un arma.</em> Hay dos muertos. Un menor herido. <em>[pausa de 3 seg]</em> Y México entero se parte en dos: los que la ven como una criminal, y los que la ven como la única persona que hizo lo que el Estado prometió y no hizo. <strong>Esa fractura es la historia real.</strong></p></div>
+          <div class="guion-line"><span class="speaker dir">PRESENTADOR — ANÁLISIS</span><p>En julio de 2025, el Congreso de EdoMex aprobó el Decreto 128: <strong>25 años con seis meses. 1,500 días multa.</strong> Para un delito que el CPF castiga con máximo 5 años. La misma conducta, dos jurisdicciones, dos décadas de diferencia en la pena. <em>Eso es lo que pasa cuando el sistema legisla por escándalo en lugar de por análisis.</em> En febrero de 2026, el juez condenó. La hija de Carlota recuperó el inmueble. Esto sí funcionó. Una vez. En un país de 28,364 casos al año.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="caso" id="caso-cuba">
+      <div class="caso-h" onclick="toggleCaso('caso-cuba')">
+        <div class="caso-date">Ago 2025<br>→ Ene 2026</div>
+        <div><div class="caso-title">República de Cuba 11 · Centro Histórico CDMX</div><div class="caso-loc">Cuauhtémoc · Juicio simulado en Hidalgo · Factor FIFA 2026 · SCJN Art. 60</div><div class="tag-row"><span class="tc hot">Fraude procesal</span><span class="tc gold">SCJN · AI 73/2019</span><span class="tc hot">FIFA 2026</span></div></div>
+        <span class="caret" id="car-caso-cuba">▾</span>
+      </div>
+      <div class="caso-body" id="body-caso-cuba">
+        <div class="tab-bar" style="margin-top:1.25rem"><button class="tab-btn active" onclick="switchTab('cuba','escaleta',this)">📋 Escaleta Podcast</button><button class="tab-btn" onclick="switchTab('cuba','documental',this)">🎬 Guion Documental</button></div>
+        <div id="cuba-escaleta" class="tab-panel active">
+          <div class="alert-box"><span class="al-lbl">⚡ Pico de dopamina #3 · Fraude de cuello blanco · min 13:00</span>Este caso conecta al inversionista de alta gama con la audiencia general: el Factor FIFA como detonador de desalojos estratégicos.</div>
+          <div class="guion-line"><span class="speaker dir">CONDUCTOR</span><p>Agosto 27, 2025. 2 de la mañana. 19 familias en República de Cuba 11. Algunas llevan cincuenta años ahí. Sujetos encapuchados. Policías presentes. ¿Por qué la policía no interviene a favor de los residentes?</p></div>
+          <div class="guion-line"><span class="speaker inv">INVITADO</span><p>Porque existe una orden judicial. Emitida por un juzgado de Hidalgo. Para un inmueble en la Ciudad de México. <strong>Eso tiene un nombre: fraude procesal.</strong> Y tiene un cómplice: el sistema de jurisdicción que lo permite.</p></div>
+          <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:12 seg</span>Mapa: flecha Hidalgo → CDMX. Texto: "Un juez de Hidalgo para un inmueble en CDMX." Documentos con sello distorsionado. Sonido: campana de juzgado reversa.</div>
+          <div class="guion-line"><span class="speaker dir">CONDUCTOR — FACTOR FIFA</span><p>El 19 de enero de 2026, la SCJN tenía programada la discusión del Artículo 60. Las familias bloquearon el acceso. <em>¿Y la Corte?</em> Retiró el proyecto del orden del día. México recibe el Mundial en 2026. El Centro Histórico vale oro. <strong>El Artículo 60 estorba.</strong></p></div>
+          <div class="guion-line"><span class="speaker inv">INVITADO — EXCLUSIVA DE ANÁLISIS</span><p>Lo que no se ha dicho: en esas zonas existe el "vaciamiento por inducción". No es despojo violento. Es una serie de acciones legales que hacen inhabitable la permanencia. Corte de servicios, amenazas veladas, procedimientos judiciales interminables. Despojo lento. Casi imposible de probar.</p></div>
+          <div class="insight-box"><span class="in-lbl">💡 Insight para el inversionista · Factor geopolítico</span>Cualquier inmueble en el Centro Histórico, Roma, Condesa o Doctores tiene ahora un componente de riesgo geopolítico vinculado al evento FIFA. Los desalojos estratégicos no son casuísticos. Responden a demanda de mercado de alta gama que no necesariamente viene de México.</div>
+        </div>
+        <div id="cuba-documental" class="tab-panel">
+          <div class="guion-line"><span class="speaker dir">PRESENTADOR</span><p>Agosto 27, 2025. 2 de la madrugada. 19 familias en República de Cuba 11. Algunas llevan cincuenta años en ese edificio. Llegan sujetos encapuchados. Hay policías presentes. Los policías no intervienen a favor de los residentes. <em>¿Por qué?</em> Porque existe una orden judicial. <strong>Emitida por un juzgado de Hidalgo. Para un inmueble en la Ciudad de México.</strong> Eso tiene un nombre: fraude procesal.</p></div>
+          <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:12 seg</span>Mapa animado CDMX → Hidalgo. Documentos con sello distorsionado. Texto: "¿Error o diseño?" Campana reversa.</div>
+          <div class="guion-line"><span class="speaker dir">PRESENTADOR — FACTOR FIFA</span><p>El 19 de enero de 2026, la Suprema Corte tenía programada la discusión de la acción de inconstitucionalidad 73/2019 sobre el Artículo 60 de la Ley de Derechos Humanos de la CDMX — el artículo que protege de desalojos forzados. Las familias bloquearon el acceso. La Corte retiró el proyecto. <strong>México recibe el Mundial en 2026. El Centro Histórico vale oro. El Artículo 60 estorba.</strong> Eso no lo digo yo. Lo dice el registro de dos años de documentación de colectivos de derechos habitacionales.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="caso" id="caso-otros">
+      <div class="caso-h" onclick="toggleCaso('caso-otros')">
+        <div class="caso-date">2022–2026</div>
+        <div><div class="caso-title">Cronología Complementaria · CDMX y EdoMex</div><div class="caso-loc">Casa Octavio Paz · Antonio Caso 104 · Escalada enero 2026</div><div class="tag-row"><span class="tc">Cuauhtémoc</span><span class="tc">S. Rafael</span><span class="tc hot">+103% ene. 2026</span></div></div>
+        <span class="caret" id="car-caso-otros">▾</span>
+      </div>
+      <div class="caso-body" id="body-caso-otros">
+        <div class="steps" style="margin-top:1.25rem">
+          <div class="step"><div class="step-n">22</div><div><div class="step-t">Antonio Caso 104, Colonia San Rafael · 2022–2023</div><div class="step-d">Edificio en litigio crónico desde 2006. Más de 15 años sin resolución. Alcaldía Cuauhtémoc acumula el mayor número de carpetas de despojo de la CDMX.</div><div class="step-tl">→ Guion: "el litigio eterno como estrategia de desgaste"</div></div></div>
+          <div class="step"><div class="step-n">24</div><div><div class="step-t">Desalojo Casa Octavio Paz · Feb 2024</div><div class="step-d">SSC + Guardia Nacional desalojaron el inmueble del Nobel mexicano. Predio a disposición del DIF-CDMX. Ilustra la complejidad cuando hay valor patrimonial además de comercial.</div><div class="step-tl">→ Guion: "incluso los inmuebles icónicos no están blindados"</div></div></div>
+          <div class="step"><div class="step-n">26</div><div><div class="step-t">Escalada CDMX · Enero 2026 · +103%</div><div class="step-d">Cuauhtémoc: 12 vs. 5 denuncias enero 2025. G.A. Madero e Iztapalapa también lideran. Gabinete contra Despojos: 430 restituciones acumuladas 2025-26, pero tasa de resolución plena menor al 30%.</div><div class="step-tl">→ Guion: "el problema no desapareció. Aceleró."</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN 4: BLINDAJE -->
+<div class="wrap" id="blindaje">
+  <div class="sec-eye">04 · Inteligencia de inversión y blindaje patrimonial · 18:00 – 25:00</div>
+  <div class="sec-title">Los 3 Candados<br><span class="gold">Que el 95% Ignora</span></div>
+  <div class="sec-intro">Aquí se resuelve el misterio planteado en los primeros 60 segundos. Anunciar la resolución como evento narrativo, no como listado.</div>
+  <div class="tab-bar"><button class="tab-btn active" onclick="switchTab('reg','escaleta',this)">📋 Escaleta Podcast</button><button class="tab-btn" onclick="switchTab('reg','documental',this)">🎬 Guion Documental</button></div>
+  <div id="reg-escaleta" class="tab-panel active">
+    <div class="guion-line"><span class="speaker dir">CONDUCTOR</span><p>Hablemos de la regularización territorial. Y antes de que bosteces: ¿por qué crees que la mayoría ni siquiera conoce el INSUS?</p></div>
+    <div class="guion-line"><span class="speaker inv">INVITADO</span><p>Porque nadie tiene incentivos para enseñarte algo que te vuelve más difícil de estafar. El INSUS y la SEDATU tienen programas activos ahorita mismo. <strong>El título inscrito en el Registro Público de la Propiedad no es un papel. Es el escudo más eficaz que existe contra el despojo.</strong></p></div>
+  </div>
+  <div id="reg-documental" class="tab-panel">
+    <div class="guion-line"><span class="speaker dir">PRESENTADOR</span><p>Hablemos de la regularización territorial. Y si bostezaste mentalmente, eso es exactamente el problema. La regularización predial es la herramienta con el mayor retorno de protección patrimonial del mercado inmobiliario mexicano, y es también la más ignorada. El INSUS y la SEDATU tienen programas activos con convocatorias abiertas en 2025. <strong>El título inscrito en el Registro Público no es solo papel: es el escudo más eficaz que existe.</strong></p></div>
+  </div>
+  <div class="card-g" style="margin-top:1rem">
+    <div class="cc"><div class="cc-n" style="color:var(--teal)">Función preventiva</div><div class="cc-s">Antes del conflicto</div><div class="cc-row"><span class="cc-k">Efecto</span><span class="cc-v">Elimina vacíos jurídicos explotables</span></div><div class="cc-row"><span class="cc-k">Institución</span><span class="cc-v">INSUS (ex-CORETT) + SEDATU</span></div><div class="cc-row"><span class="cc-k">Programa</span><span class="cc-v">PRAH 2025 · Subsidio gubernamental</span></div></div>
+    <div class="cc"><div class="cc-n" style="color:var(--gold)">Función restitutiva</div><div class="cc-s">Durante o después del conflicto</div><div class="cc-row"><span class="cc-k">Ventaja procesal</span><span class="cc-v">Folio real inscrito prioritario sobre contrato privado</span></div><div class="cc-row"><span class="cc-k">Extinción de dominio</span><span class="cc-v">Mecanismo extraordinario para inmuebles ligados a CO</span></div><div class="cc-row"><span class="cc-k">Limitante</span><span class="cc-v">No retroactivo si despojo ya consolidó posesión larga</span></div></div>
+  </div>
+  <div class="sec-eye" style="margin-top:2rem">Resolución del enigma · 20:30 – 24:00</div>
+  <div class="sec-title" style="font-size:clamp(18px,2.3vw,28px);margin-bottom:.75rem">Los 3 Candados de<br><span class="acc">Blindaje Definitivo</span></div>
+  <div class="candados-wrap">
+    <div class="candado" id="candado-1">
+      <div class="candado-h" onclick="toggleCandado('candado-1')"><div class="candado-icon">🔒</div><div><div class="candado-ttl">Candado 1 · La Escritura No Es Suficiente</div><div class="candado-sub">Due diligence registral · Lo que nadie te dice cuando firmas</div></div><span class="caret" id="car-candado-1">▾</span></div>
+      <div class="candado-body" id="body-candado-1">
+        <div class="guion-line" style="margin-top:1rem"><span class="speaker dir">EN AMBAS VERSIONES</span><p>Una escritura notarial no vale nada si no está inscrita en el Registro Público de la Propiedad. En México, el 23% de los propietarios tienen escritura pero no tienen folio real actualizado. <strong>Regla: verifica hoy mismo que tu folio real existe, está vigente y no tiene anotaciones preventivas de terceros.</strong></p></div>
+        <div class="steps" style="margin-top:.5rem">
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">✓</div><div><div class="step-t">Verifica existencia del folio real</div><div class="step-d">Portal del Registro Público de tu entidad. Gratuito. Presencial o en línea.</div></div></div>
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">✓</div><div><div class="step-t">Busca anotaciones preventivas o litigios pendientes</div><div class="step-d">Embargos, gravámenes, juicios activos. Cuesta menos de $3,000 MXN y puede salvarte millones.</div></div></div>
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">✓</div><div><div class="step-t">Historia registral completa del predio</div><div class="step-d">La cadena de transmisión de dominio desde el origen. Ahí aparecen los vicios ocultos.</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="candado" id="candado-2">
+      <div class="candado-h" onclick="toggleCandado('candado-2')"><div class="candado-icon">🔒</div><div><div class="candado-ttl">Candado 2 · El Historial de Conflictos del Predio</div><div class="candado-sub">Due diligence penal · Lo que el vendedor no te va a contar</div></div><span class="caret" id="car-candado-2">▾</span></div>
+      <div class="candado-body" id="body-candado-2">
+        <div class="guion-line" style="margin-top:1rem"><span class="speaker dir">EN AMBAS VERSIONES</span><p>Un inmueble puede tener historial de carpetas de investigación, denuncias previas por despojo, órdenes de protección vencidas. Ese historial no aparece en el Registro Público. Aparece en la Fiscalía. <strong>Regla: solicita un análisis de antecedentes penales del predio, no solo del vendedor.</strong></p></div>
+        <div class="steps" style="margin-top:.5rem">
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">✓</div><div><div class="step-t">Historial de carpetas en la Fiscalía local</div><div class="step-d">FGJ-CDMX o FGJEM según la entidad. Solicitud formal. Tu abogado puede hacerlo por ti.</div></div></div>
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">✓</div><div><div class="step-t">Litigios en juzgados foráneos</div><div class="step-d">El caso Cuba demostró que una resolución de Hidalgo puede afectar un inmueble en CDMX. Consulta también entidades limítrofes.</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="candado" id="candado-3">
+      <div class="candado-h" onclick="toggleCandado('candado-3')"><div class="candado-icon unlocked">🔓</div><div><div class="candado-ttl">Candado 3 · El Escudo que Te Salva de la Prisión</div><div class="candado-sub">Protocolo de actuación inmediata · El único que aplica cuando ya estás en el problema</div></div><span class="caret" id="car-candado-3">▾</span></div>
+      <div class="candado-body" id="body-candado-3">
+        <div class="alert-box" style="margin-top:1rem"><span class="al-lbl">⚡ Pico de dopamina #4 · El desenlace del misterio · min 23:00</span>Pausa dramática de 2 segundos antes de decirlo. Silencio total. Luego la respuesta.</div>
+        <div class="guion-line"><span class="speaker dir">EN AMBAS VERSIONES — PAUSA DE 2 SEG ANTES</span><p><em>[pausa]</em> Si llegas a tu inmueble y está ocupado por personas sin derecho, <strong>bajo ninguna circunstancia entres por la fuerza.</strong> Aunque seas el dueño legítimo con escritura en mano. El allanamiento te convierte en el acusado. El despojador tiene más experiencia en el sistema que tú. Su estrategia está diseñada para que tú cometas el primer error.</p></div>
+        <div class="steps" style="margin-top:.5rem">
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">1</div><div><div class="step-t">No entrar por la fuerza bajo ninguna circunstancia</div><div class="step-d">El allanamiento te convierte en el acusado, aunque seas el dueño legítimo.</div></div></div>
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">2</div><div><div class="step-t">Video primero, todo lo demás después</div><div class="step-d">Documenta con GPS activo. Esa es tu evidencia primaria.</div></div></div>
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">3</div><div><div class="step-t">Abogado especialista antes que el 911</div><div class="step-d">Sin representación legal desde el minuto uno, el sistema te come vivo.</div></div></div>
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">4</div><div><div class="step-t">Gabinete contra Despojos (CDMX) o Operación Restitución (FGJEM)</div><div class="step-d">Las rutas institucionales más directas según la entidad.</div></div></div>
+          <div class="step" style="padding:.75rem 0"><div class="step-n" style="font-size:16px;width:28px">5</div><div><div class="step-t">Solicitar medidas cautelares de inmediato</div><div class="step-d">El juez puede suspender el despojo mientras se resuelve el fondo. Solo si lo pides con el expediente correcto.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SECCIÓN 5: INGENIERÍA SOCIAL -->
+<div class="wrap" id="issocial">
+  <div class="sec-eye">05 · Metodología aplicada · Ingeniería Social y Puntos de Presión</div>
+  <div class="sec-title">Cómo Funciona la<br><span class="purple">Ingeniería Social</span> en Este Programa</div>
+  <div class="sec-intro">La ingeniería social de contenidos no es manipulación: es el <strong>diseño deliberado de las condiciones cognitivas y emocionales</strong> que hacen que el espectador no pueda dejar de ver, procesar y compartir. Aquí está la arquitectura metodológica aplicada a este episodio de <strong>Vicioculto</strong>.</div>
+  <div class="purple-box" style="margin-bottom:2rem"><span class="pu-lbl">🧠 Marco metodológico</span>La ingeniería social de contenidos en este programa opera sobre tres axiomas: (1) <strong>La atención es escasa y se captura con conflicto, no con información.</strong> (2) <strong>La retención se mantiene con misterio abierto, no con respuestas anticipadas.</strong> (3) <strong>La acción (compartir, comentar, suscribirse) se activa con identidad amenazada, no con hechos neutros.</strong> Todo lo que sigue deriva de estos tres principios.</div>
+
+  <div class="sec-eye" style="margin-top:0">Puntos de presión · Pressure Points Architecture</div>
+  <div class="sec-title" style="font-size:clamp(18px,2.3vw,28px);margin-bottom:1.25rem">Los 8 Disparadores<br><span class="purple">Psicológicos Activos</span></div>
+  <div class="pp-grid">
+    <div class="pp-card"><div class="pp-idx" style="color:var(--accent)">Punto de presión 01 · Urgencia Amenazante</div><div class="pp-ttl">Paradoja del Dueño Criminal</div><div class="pp-def">La amenaza no es abstracta — es personal y específica. "Eres tú. Ahora mismo. Esto puede pasarte." Activa el modo de supervivencia neurológico: el cerebro no puede ignorar una amenaza directa.</div><div class="pp-app"><strong>Aplicación:</strong> Segundos 0–15. El dueño legítimo que puede ser detenido si entra a su propia casa. Sin preámbulo. El espectador está en el problema antes de saber el nombre del programa.</div></div>
+    <div class="pp-card"><div class="pp-idx" style="color:var(--purple)">Punto de presión 02 · Curiosidad de Cierre</div><div class="pp-ttl">El Efecto Zeigarnik: Los 3 Candados</div><div class="pp-def">El cerebro humano recuerda con más intensidad las tareas incompletas que las completas (Bluma Zeigarnik, 1927). Un loop abierto crea tensión cognitiva que solo se resuelve al escuchar el final.</div><div class="pp-app"><strong>Aplicación:</strong> Los "3 candados" se anuncian en el minuto 0:45 y se resuelven en el minuto 23:00. 22 minutos de loop abierto activo. El tercer candado se presenta como el que evita la cárcel — máxima consecuencia personal.</div></div>
+    <div class="pp-card"><div class="pp-idx" style="color:var(--gold)">Punto de presión 03 · Contraste de Expectativa</div><div class="pp-ttl">El Dato que Destruye la Narrativa Oficial</div><div class="pp-def">Cuando un dato rompe con lo que el espectador asume que es cierto, se produce un "error de predicción" en el sistema dopaminérgico. El cerebro premia la sorpresa con atención.</div><div class="pp-app"><strong>Aplicación:</strong> El 1.5% de restituciones. El espectador asume que denunciar sirve. El dato lo destruye. Se inyecta en los primeros 90 segundos, no al final, cuando la atención es más frágil.</div></div>
+    <div class="pp-card"><div class="pp-idx" style="color:var(--accent)">Punto de presión 04 · Identificación por Indignación</div><div class="pp-ttl">Caso Carlota: El Colapso del Pacto Social</div><div class="pp-def">La indignación moral activa la ínsula anterior y la corteza prefrontal ventromedial. Un espectador indignado comparte. Un espectador informado, raramente. La distinción es crítica para el ROA.</div><div class="pp-app"><strong>Aplicación:</strong> El caso Carlota se presenta como la pregunta: "¿Qué harías tú?" La pregunta de identidad transforma al espectador de testigo a protagonista — eso genera el comentario que activa el algoritmo.</div></div>
+    <div class="pp-card"><div class="pp-idx" style="color:var(--teal)">Punto de presión 05 · Autoridad Episódica</div><div class="pp-ttl">El Conductor como Fiscal del Patrimonio</div><div class="pp-def">El cerebro atribuye mayor credibilidad a quien hace preguntas incómodas que a quien las responde. El "fiscal" que interpela con escepticismo posicionado genera más confianza que el propio experto.</div><div class="pp-app"><strong>Aplicación (versión podcast):</strong> El conductor nunca pregunta para saber — pregunta para exponer. La pregunta ya contiene la acusación. El invitado la confirma o matiza, pero el marco ya está plantado.</div></div>
+    <div class="pp-card"><div class="pp-idx" style="color:var(--purple)">Punto de presión 06 · Exclusividad del Conocimiento</div><div class="pp-ttl">"Lo que las agencias te ocultan"</div><div class="pp-def">El principio de información asimétrica como palanca de atención: si el espectador cree que accede a información que otros no tienen, su valoración del contenido sube exponencialmente. El FOMO es el combustible.</div><div class="pp-app"><strong>Aplicación:</strong> "Esto es lo que las agencias inmobiliarias te ocultan en las letras chiquitas." Se usa dos veces en el episodio para no diluir el efecto.</div></div>
+    <div class="pp-card"><div class="pp-idx" style="color:var(--gold)">Punto de presión 07 · Dosificación de Dopamina</div><div class="pp-ttl">Los 4 Picos de Retención</div><div class="pp-def">La dopamina no se libera de forma constante — se libera en picos. Un video que entrega todos sus mejores datos al inicio pierde audiencia en la mitad. Dosificar cada 3–5 minutos mantiene la curva alta.</div><div class="pp-app"><strong>Pico 1:</strong> 1.5% restituciones (min 1:20) · <strong>Pico 2:</strong> Caso Carlota (min 10:30) · <strong>Pico 3:</strong> Fraude procesal Cuba + FIFA (min 13:00) · <strong>Pico 4:</strong> El candado que salva de la cárcel (min 23:00).</div></div>
+    <div class="pp-card"><div class="pp-idx" style="color:var(--teal)">Punto de presión 08 · Identidad de Marca</div><div class="pp-ttl">Vicioculto como Contraseña Cultural</div><div class="pp-def">Un nombre de marca en un programa de contenido funciona como activador de identidad grupal: "yo soy de los que saben, de los que escuchan Vicioculto." La introducción del nombre después del hook garantiza que la primera asociación emocional sea el conflicto, no el formato.</div><div class="pp-app"><strong>Aplicación:</strong> "Vicioculto" aparece por primera vez en el minuto 0:50 — después de que el espectador ya está dentro del conflicto. Segunda mención: orgánica en el cuerpo del programa. Tercera: sello de autoridad en el cierre.</div></div>
+  </div>
+
+  <div class="sec-eye" style="margin-top:1rem">Embudo metodológico · Retención por tiempo</div>
+  <div class="sec-title" style="font-size:clamp(18px,2.3vw,28px);margin-bottom:1.25rem">El Funnel de<br><span class="purple">Retención Algorítmica</span></div>
+  <div class="funnel">
+    <div class="funnel-step"><div class="fn-num">0</div><div><div class="fn-t">Captura inicial · 0–15 segundos</div><div class="fn-d">La paradoja del dueño criminal. Sin música, sin cortinilla, sin saludo. La neurociencia del miedo activa la amígdala — el cerebro literalmente no puede cambiar de canal hasta evaluar si la amenaza aplica a él.</div><div class="fn-ex">→ Mecanismo: Amenaza de identidad · Sistema de supervivencia neurológico</div></div></div>
+    <div class="funnel-step"><div class="fn-num">1</div><div><div class="fn-t">Siembra del misterio · 0:45 – 1:00</div><div class="fn-d">Los 3 candados se nombran pero no se revelan. El efecto Zeigarnik activa la tensión cognitiva. El espectador tiene una deuda mental con el programa: necesita escuchar el final para cerrar el loop.</div><div class="fn-ex">→ Mecanismo: Efecto Zeigarnik · Loop abierto activo por 22 minutos</div></div></div>
+    <div class="funnel-step"><div class="fn-num">2</div><div><div class="fn-t">Credibilidad técnica · 1:00 – 3:00</div><div class="fn-d">Marco legal preciso (Art. 395, Art. 1017, Decreto 128). El contraste entre 5 años federales y 25 años en EdoMex instala una imagen de sistema fragmentado e irracional. La irracionalidad aumenta el riesgo percibido.</div><div class="fn-ex">→ Mecanismo: Autoridad técnica + contraste de expectativa + riesgo percibido elevado</div></div></div>
+    <div class="funnel-step"><div class="fn-num">3</div><div><div class="fn-t">Pico de indignación #1 · 3:00 – 7:00</div><div class="fn-d">Anatomía de los sindicatos del despojo. El dato de $80,000–$400,000 MXN anuales en costos legales transforma el problema de abstracto a económicamente concreto para el inversionista.</div><div class="fn-ex">→ Mecanismo: Concreción económica + amenaza patrimonial directa</div></div></div>
+    <div class="funnel-step"><div class="fn-num">4</div><div><div class="fn-t">Storytelling emocional · 10:00 – 18:00</div><div class="fn-d">Casos Carlota y República de Cuba. La emoción cementa el recuerdo. Secuencia correcta: emoción primero, análisis después. No al revés.</div><div class="fn-ex">→ Mecanismo: Empatía narrativa + indignación moral + identidad amenazada</div></div></div>
+    <div class="funnel-step"><div class="fn-num">5</div><div><div class="fn-t">Resolución del misterio · 20:30 – 24:00</div><div class="fn-d">Los 3 candados se revelan como herramientas accionables. La recompensa de la espera activa una descarga de dopamina real. El espectador tiene algo concreto que hacer — y eso activa el compartir.</div><div class="fn-ex">→ Mecanismo: Recompensa diferida + comportamiento de compartir activado</div></div></div>
+    <div class="funnel-step"><div class="fn-num">6</div><div><div class="fn-t">Cierre de autoridad · 25:00 – 30:00</div><div class="fn-d">Vicioculto como marca editorial de élite. La frase de cierre icónica ("La propiedad más valiosa no es la que más vale. Es la que no te pueden quitar.") es shareable por diseño: corta, memorable, con carga emocional e intelectual simultánea.</div><div class="fn-ex">→ Mecanismo: Identidad de marca + frase viral · Arquitectura de la cita shareable</div></div></div>
+  </div>
+
+  <div class="sec-eye" style="margin-top:1rem">Matriz de detonantes · Ingeniería de comentarios</div>
+  <div class="sec-title" style="font-size:clamp(18px,2.3vw,28px);margin-bottom:1.25rem">Cómo Activar<br><span class="purple">la Caja de Comentarios</span></div>
+  <div class="is-matrix">
+    <div class="is-row header"><div class="is-cell">Trigger / Detonante</div><div class="is-cell">Mecanismo psicológico y aplicación</div><div class="is-cell">Intensidad</div></div>
+    <div class="is-row"><div class="is-cell"><span class="is-trigger">"¿A ti o a alguien que conoces le ha pasado esto?"</span></div><div class="is-cell is-mec">Activa el principio de reciprocidad social: quien comparte experiencias espera validación del grupo. Inyectar al minuto 1:30 mientras aún hay tráfico de salida.</div><div class="is-cell" style="text-align:center"><span class="badge badge-red">Muy alto</span></div></div>
+    <div class="is-row"><div class="is-cell"><span class="is-trigger">"¿Sabes cuántos inmuebles devuelve el sistema al año?"</span></div><div class="is-cell is-mec">Pregunta cuya respuesta el espectador no sabe. El 1.5% es tan extremo que provoca incredulidad. La incredulidad genera comentarios de debate que el algoritmo interpreta como engagement.</div><div class="is-cell" style="text-align:center"><span class="badge badge-red">Muy alto</span></div></div>
+    <div class="is-row"><div class="is-cell"><span class="is-trigger">"¿Crees que Carlota estaba en su derecho?"</span></div><div class="is-cell is-mec">Pregunta de polarización moral deliberada. No hay respuesta correcta — hay dos bandos. El debate entre bandos sostiene el tiempo de actividad en el video días después de publicación.</div><div class="is-cell" style="text-align:center"><span class="badge badge-red">Máxima</span></div></div>
+    <div class="is-row"><div class="is-cell"><span class="is-trigger">"¿Cuál de los 3 candados ya tienes?"</span></div><div class="is-cell is-mec">Pregunta de posicionamiento personal. El espectador hace un inventario mental y responde para autoafirmarse o pedir ayuda. Ambas respuestas suman al engagement.</div><div class="is-cell" style="text-align:center"><span class="badge badge-gold">Alto</span></div></div>
+    <div class="is-row"><div class="is-cell"><span class="is-trigger">Frase de cierre icónica de Vicioculto</span></div><div class="is-cell is-mec">"La propiedad más valiosa no es la que más vale. Es la que no te pueden quitar." Diseñada para ser copiada en comentarios y stories. El espectador la adopta como propia.</div><div class="is-cell" style="text-align:center"><span class="badge badge-purple">Viral</span></div></div>
+    <div class="is-row"><div class="is-cell"><span class="is-trigger">B-Roll + dato en pantalla sin voz</span></div><div class="is-cell is-mec">El silencio estratégico en un dato visual crea disonancia perceptual que obliga al cerebro a procesar más profundamente. Mayor retención del dato = mayor reproducción en comentarios.</div><div class="is-cell" style="text-align:center"><span class="badge badge-gold">Alto</span></div></div>
+  </div>
+</div>
+<!-- SECCIÓN 6: CIERRE -->
+<div class="wrap" id="cierre">
+  <div class="sec-eye">06 · Cierre de alta autoridad · 25:00 – 30:00 min</div>
+  <div class="sec-title">La Frase con la que<br><span class="acc">se Termina el Mito</span></div>
+  <div class="sec-intro">El cierre no es un resumen. Es un posicionamiento de marca editorial. <strong>Vicioculto</strong> se sella aquí como voz de referencia en el mercado inmobiliario.</div>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('cierre','escaleta',this)">📋 Escaleta Podcast · Con Invitado</button>
+    <button class="tab-btn" onclick="switchTab('cierre','documental',this)">🎬 Guion Documental · Solo</button>
+  </div>
+  <div id="cierre-escaleta" class="tab-panel active">
+    <div class="card-g" style="margin-bottom:1.5rem;margin-top:1rem">
+      <div class="cc"><div class="cc-n" style="color:var(--gold)">Dinámica de cierre · Podcast</div><div class="cc-s">El invitado aporta el último dato. El conductor tiene la última palabra.</div><div class="cc-row"><span class="cc-k">Último dato invitado</span><span class="cc-v">"En 2025 se restituyeron 430 inmuebles en CDMX. Suena bien. Son el 0.9% del total en carpeta."</span></div><div class="cc-row"><span class="cc-k">Recursos del invitado</span><span class="cc-v">INSUS, Gabinete CDMX, FGJEM, Plataforma Mafia del Despojo</span></div><div class="cc-row"><span class="cc-k">Cierre conductor</span><span class="cc-v">Monólogo de posicionamiento de Vicioculto — directo a cámara</span></div></div>
+      <div class="cc"><div class="cc-n" style="color:#4a7fbf">Instrucciones de producción</div><div class="cc-s">Plano y música de cierre</div><div class="cc-row"><span class="cc-k">Plano</span><span class="cc-v">Plano medio. Sin movimiento. Total quietud.</span></div><div class="cc-row"><span class="cc-k">Música</span><span class="cc-v">Fade in muy sutil. 30% volumen máximo.</span></div><div class="cc-row"><span class="cc-k">Objetivo</span><span class="cc-v">El espectador guarda el video y lo comparte a quien acaba de comprar un inmueble.</span></div></div>
+    </div>
+    <div class="guion-line"><span class="speaker inv">INVITADO — último dato</span><p>En 2025 se restituyeron 430 inmuebles en la Ciudad de México. Suena bien cuando lo dices así. Pero es el 0.9% de todos los casos que hay en carpeta activa. El sistema está mejorando. Muy lentamente. Y los que no pueden esperar ese ritmo son los que están afuera de su casa hoy.</p></div>
+    <div class="guion-line"><span class="speaker dir">CONDUCTOR — despedida y recursos</span><p>INSUS, el Gabinete contra Despojos de la CDMX, la FGJEM en el Estado de México — los links están en la descripción. Gracias a [nombre del invitado] por estar hoy en <strong>Vicioculto</strong>. Y gracias a ti por quedarte los 30 minutos. <em>[pausa]</em> Ya sabes lo que tienes que hacer.</p></div>
+  </div>
+  <div id="cierre-documental" class="tab-panel">
+    <div class="insight-box" style="margin-top:1rem"><span class="in-lbl">📖 Instrucción técnica · Documental</span>Monólogo deliberado, sin prisa, autoridad tranquila. El presentador no repasa lo que dijo: declara su perspectiva de mercado. Plano cerrado final. Sin movimiento de cámara. Fade out lento a negro.</div>
+    <div class="guion-line" style="margin-top:1rem"><span class="speaker dir">PRESENTADOR — MONÓLOGO FINAL · TONO DECLARATIVO</span><p>En 2025 se restituyeron 430 inmuebles en la Ciudad de México. El 0.9% de los casos en carpeta activa. El sistema está mejorando. Muy lentamente. Y los que no pueden esperar ese ritmo son los que están afuera de su casa hoy, con las escrituras en la mano y sin que nadie los escuche. <em>[pausa de 2 seg]</em> En México, el mayor lujo no es comprar bien. <strong>Es comprar seguro.</strong> Y eso, en el mercado inmobiliario de 2026, no se da por sentado. Se construye. Se documenta. Se defiende. Los links a INSUS, el Gabinete contra Despojos y la FGJEM están en la descripción. Gracias por estar en <strong>Vicioculto</strong>.</p></div>
+  </div>
+  <div class="monologue" style="margin-top:1.5rem">
+    <div class="mono-eyebrow">Monólogo de cierre · Conductor / Presentador · Vicioculto — ambas versiones</div>
+    <p class="mono-text">En México, el mayor lujo no es comprar bien. <strong>Es comprar seguro.</strong> Y eso, en el mercado inmobiliario de 2026, no se da por sentado. Se construye. Se documenta. Se defiende. El sistema no está diseñado para protegerte de forma automática. Está diseñado para funcionar si sabes cómo usarlo. <em>Y la diferencia entre los que saben y los que no, es exactamente lo que has visto hoy en Vicioculto.</em><br><br>El despojo no es un problema de las colonias populares. Es un problema del mercado inmobiliario mexicano completo. Afecta al adulto mayor en Chalco y al inversionista en la Condesa por exactamente la misma razón: <strong>la certeza jurídica en este país no viene incluida con la escritura.</strong> Hay que ir a buscarla. Hay que pagarla. Hay que defenderla.</p>
+    <div class="mono-close">La propiedad más valiosa<br>no es la que más vale.<br><span class="acc">Es la que no te pueden quitar.</span></div>
+  </div>
+  <div class="broll-note" style="margin-top:1rem"><span class="broll-lbl">📽 B-Roll obligatorio · Pantalla final · 0:30 seg</span>Fade out a negro lento. Texto centrado: "En 2024, se presentaron 28,364 denuncias por despojo en México. 1.5% resultó en restitución." Pausa 4 seg. Logo Vicioculto. Recursos en pantalla (INSUS, Gabinete CDMX, FGJ). Música fade out completo.</div>
+</div>
+
+<!-- SECCIÓN 7: BÚFALO -->
+<div class="wrap" id="bufalo">
+  <div class="sec-eye">07 · Estrategia Búfalo · Multiplataforma · TikTok · Shorts · Reels</div>
+  <div class="sec-title">Fragmentación de<br><span class="acc">Alto Impacto</span></div>
+  <div class="sec-intro"><strong>Gancho (0–3s) + Desarrollo acelerado (3–45s) + CTA al video largo (45–60s).</strong> Cada micro-contenido extrae un pico natural de tensión del programa principal de Vicioculto.</div>
+  <div class="micro-g">
+    <div class="mc"><div class="mc-idx">Micro #01 · Vicioculto</div><div class="mc-ttl">La Paradoja del Dueño Criminal</div><div class="mc-row"><span class="mc-k">Extracción</span><span class="mc-v">Min 0:00 – 1:00</span></div><div class="mc-row"><span class="mc-k">Plataformas</span><span class="mc-v">TikTok · Shorts · Reels</span></div><div class="mc-row"><span class="mc-k">Duración</span><span class="mc-v">55 segundos</span></div><div class="mc-row"><span class="mc-k">Detonante</span><span class="mc-v">"¿A ti o a alguien que conoces le ha pasado esto?"</span></div><div class="mc-hook"><span class="lbl">Gancho 0–3 seg</span>"Si intentas entrar a tu casa con las escrituras en la mano y hay alguien adentro... el delincuente eres tú." [corte + logo Vicioculto]</div></div>
+    <div class="mc"><div class="mc-idx">Micro #02 · Vicioculto</div><div class="mc-ttl">El Número que Destruye la Narrativa Oficial</div><div class="mc-row"><span class="mc-k">Extracción</span><span class="mc-v">Min 3:30 – 4:30</span></div><div class="mc-row"><span class="mc-k">Edición</span><span class="mc-v">Escala de grises · Zoom in · Efecto alarma</span></div><div class="mc-row"><span class="mc-k">Duración</span><span class="mc-v">60 segundos</span></div><div class="mc-row"><span class="mc-k">Detonante</span><span class="mc-v">"¿Sabes cuántos inmuebles devuelve el sistema al año?"</span></div><div class="mc-hook"><span class="lbl">Gancho 0–3 seg</span>Gráfico animado: 3,643 → 55. Voz: "El uno punto cinco por ciento. Eso es lo que el sistema te devuelve."</div></div>
+    <div class="mc"><div class="mc-idx">Micro #03 · Vicioculto</div><div class="mc-ttl">Chalco: El Estado que Llegó Tarde</div><div class="mc-row"><span class="mc-k">Extracción</span><span class="mc-v">Min 10:30 – 11:30</span></div><div class="mc-row"><span class="mc-k">Edición</span><span class="mc-v">Escala de grises · Texto rojo: "El Estado falló primero"</span></div><div class="mc-row"><span class="mc-k">Duración</span><span class="mc-v">58 segundos</span></div><div class="mc-row"><span class="mc-k">Detonante</span><span class="mc-v">"¿Crees que la ley la protegió o la abandonó?"</span></div><div class="mc-hook"><span class="lbl">Gancho 0–3 seg</span>"Doña Carlota denunció. Nadie llegó. Entonces ella llegó sola." [silencio + percusión grave]</div></div>
+    <div class="mc"><div class="mc-idx">Micro #04 · Vicioculto</div><div class="mc-ttl">El Juez de Hidalgo y el Inmueble del Centro</div><div class="mc-row"><span class="mc-k">Extracción</span><span class="mc-v">Min 13:00 – 14:00</span></div><div class="mc-row"><span class="mc-k">Edición</span><span class="mc-v">Mapa animado CDMX → Hidalgo · Velocidad 1.5x</span></div><div class="mc-row"><span class="mc-k">Duración</span><span class="mc-v">55 segundos</span></div><div class="mc-row"><span class="mc-k">Detonante</span><span class="mc-v">"¿Sabías que esto es posible legalmente?"</span></div><div class="mc-hook"><span class="lbl">Gancho 0–3 seg</span>"¿Cómo se desaloja a 19 familias de CDMX con una orden de un juez de Hidalgo? Así funciona el fraude procesal en México."</div></div>
+    <div class="mc"><div class="mc-idx">Micro #05 · Vicioculto</div><div class="mc-ttl">Los 3 Candados · El Teaser del Misterio</div><div class="mc-row"><span class="mc-k">Extracción</span><span class="mc-v">Min 0:45 + resumen min 20:00</span></div><div class="mc-row"><span class="mc-k">Objetivo</span><span class="mc-v">Conversión directa al video largo</span></div><div class="mc-row"><span class="mc-k">Duración</span><span class="mc-v">60 segundos</span></div><div class="mc-row"><span class="mc-k">Detonante</span><span class="mc-v">"¿Cuál de los tres ya tienes?" (Engagement por posición)</span></div><div class="mc-hook"><span class="lbl">Gancho 0–3 seg</span>"Hay 3 candados que te blindan ante el despojo. El primero lo tienen la mayoría. El segundo, pocos. El tercero, casi nadie. Y es el único que te salva de ir a la cárcel por recuperar tu propia casa."</div></div>
+  </div>
+  <div class="sec-eye" style="margin-top:2rem">Calendarización de distribución</div>
+  <div class="sec-title" style="font-size:clamp(18px,2.2vw,26px);margin-bottom:1.25rem">Despliegue Militar<br><span class="gold">Día a Día</span></div>
+  <div class="cal-g">
+    <div class="cal-row header"><div class="cal-cell">Día / Fecha</div><div class="cal-cell">Hora pico</div><div class="cal-cell">Plataforma y pieza</div><div class="cal-cell">Objetivo algorítmico</div></div>
+    <div class="cal-row"><div class="cal-cell"><span class="cal-day">Día 1 · Lunes</span></div><div class="cal-cell"><span class="cal-hora">7:00–8:30 AM</span></div><div class="cal-cell">YouTube · Video largo completo (25–30 min). Simultáneo: TikTok Micro #01 con logo Vicioculto al final.</div><div class="cal-cell cal-obj">Maximizar watch time inicial. Primeras 500 impresiones definen el rollout. CTA fuerte a comentarios en min 1:30.</div></div>
+    <div class="cal-row"><div class="cal-cell"><span class="cal-day">Día 2 · Martes</span></div><div class="cal-cell"><span class="cal-hora">12:30–1:30 PM</span></div><div class="cal-cell">Instagram Reels · Micro #02 (1.5% restituciones). TikTok · Micro #03 (Caso Carlota).</div><div class="cal-cell cal-obj">Activar comentarios de indignación. Pregunta detonante activa. Objetivo: 200+ comentarios.</div></div>
+    <div class="cal-row"><div class="cal-cell"><span class="cal-day">Día 3 · Miércoles</span></div><div class="cal-cell"><span class="cal-hora">7:00–8:00 PM</span></div><div class="cal-cell">YouTube Shorts · Micro #04 (Juez de Hidalgo). TikTok · Micro #02 si el primero traccionó.</div><div class="cal-cell cal-obj">Amplificar segmento inversionistas. Hashtags: #inversióninmobiliaria #realestatemexico #vicioculto</div></div>
+    <div class="cal-row"><div class="cal-cell"><span class="cal-day">Día 5 · Viernes</span></div><div class="cal-cell"><span class="cal-hora">8:00–9:30 AM</span></div><div class="cal-cell">Reels · Micro #05 (Los 3 Candados). LinkedIn · Post de texto con los 3 candados + logo Vicioculto.</div><div class="cal-cell cal-obj">Conversión hacia el video largo. Viernes capta profesionales en descanso. Objetivo: 500 nuevas vistas al video.</div></div>
+    <div class="cal-row"><div class="cal-cell"><span class="cal-day">Día 7 · Domingo</span></div><div class="cal-cell"><span class="cal-hora">10:00 AM–12:00 PM</span></div><div class="cal-cell">Twitter/X Thread: los 3 candados. Newsletter. Respuesta activa a comentarios de YouTube como Vicioculto.</div><div class="cal-cell cal-obj">Ciclo de engagement tardío. Activar algoritmo de YouTube día 7. Objetivo: "recomendado" del nicho inmobiliario.</div></div>
+  </div>
+</div>
+<!-- SECCIÓN 8: REFERENCIAS APA 7 -->
+<div class="wrap" id="referencias">
+  <div class="sec-eye">08 · Referencias primarias · APA 7</div>
+  <div class="sec-title">Fuentes de la<br><span class="acc">Investigación</span></div>
+  <div class="sec-intro">Todas las fuentes utilizadas en la escaleta, datos estadísticos y análisis legales de este episodio de <strong>Vicioculto</strong>. Filtra por categoría.</div>
+  <div class="ref-filter">
+    <button class="rfbtn active" onclick="filterRef('all',this)">Todas</button>
+    <button class="rfbtn" onclick="filterRef('ley',this)">Legislación</button>
+    <button class="rfbtn" onclick="filterRef('stat',this)">Estadísticas</button>
+    <button class="rfbtn" onclick="filterRef('acad',this)">Académicas</button>
+    <button class="rfbtn" onclick="filterRef('prensa',this)">Prensa</button>
+    <button class="rfbtn" onclick="filterRef('inst',this)">Institucionales</button>
+  </div>
+  <div class="refs-list" id="refs-list">
+    <div class="ref-entry" data-cat="ley"><span class="ref-cat ley">Legislación</span><div class="ref-text">Cámara de Diputados del H. Congreso de la Unión. (1931, actualizado 2024). <em>Código Penal Federal</em>. Artículo 395 (Despojo). Diario Oficial de la Federación. <a class="ref-url" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/CPF.pdf" target="_blank">https://www.diputados.gob.mx/LeyesBiblio/pdf/CPF.pdf</a></div></div>
+    <div class="ref-entry" data-cat="ley"><span class="ref-cat ley">Legislación</span><div class="ref-text">Cámara de Diputados del H. Congreso de la Unión. (2023). <em>Código Nacional de Procedimientos Civiles y Familiares</em>. Artículo 1017 (Desalojo judicial). Diario Oficial de la Federación. <a class="ref-url" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/CNPCF.pdf" target="_blank">https://www.diputados.gob.mx/LeyesBiblio/pdf/CNPCF.pdf</a></div></div>
+    <div class="ref-entry" data-cat="ley"><span class="ref-cat ley">Legislación</span><div class="ref-text">Congreso del Estado de México. (2025, julio 15). <em>Decreto 128: Reforma al Código Penal del Estado de México en materia de despojo</em>. Pena máxima: 25 años 6 meses; 1,500 días multa. Gaceta del Gobierno del Estado de México.</div></div>
+    <div class="ref-entry" data-cat="ley"><span class="ref-cat ley">Legislación</span><div class="ref-text">Asamblea Constituyente de la Ciudad de México. (2019). <em>Ley Constitucional de Derechos Humanos y sus Garantías de la Ciudad de México</em>. Artículo 60. Gaceta Oficial de la CDMX. [Acción de inconstitucionalidad AI 73/2019 en trámite ante la SCJN]</div></div>
+    <div class="ref-entry" data-cat="ley"><span class="ref-cat ley">Legislación</span><div class="ref-text">Cámara de Diputados del H. Congreso de la Unión. (1928, actualizado 2023). <em>Código Civil Federal</em>. Artículo 2398 (Arrendamiento y causales de terminación). <a class="ref-url" href="https://www.diputados.gob.mx/LeyesBiblio/pdf/CCF.pdf" target="_blank">https://www.diputados.gob.mx/LeyesBiblio/pdf/CCF.pdf</a></div></div>
+    <div class="ref-entry" data-cat="stat"><span class="ref-cat stat">Estadísticas</span><div class="ref-text">Secretariado Ejecutivo del Sistema Nacional de Seguridad Pública (SESNSP). (2025). <em>Incidencia delictiva del fuero común: Carpetas de investigación por despojo, 2015–2025</em>. Gobierno de México. <a class="ref-url" href="https://www.gob.mx/sesnsp" target="_blank">https://www.gob.mx/sesnsp</a></div></div>
+    <div class="ref-entry" data-cat="stat"><span class="ref-cat stat">Estadísticas</span><div class="ref-text">Instituto Nacional de Estadística y Geografía (INEGI). (2023). <em>Encuesta Nacional de Victimización y Percepción sobre Seguridad Pública (ENVIPE) 2023</em>. Tasa de impunidad: 82.8%. <a class="ref-url" href="https://www.inegi.org.mx/programas/envipe/2023/" target="_blank">https://www.inegi.org.mx/programas/envipe/2023/</a></div></div>
+    <div class="ref-entry" data-cat="stat"><span class="ref-cat stat">Estadísticas</span><div class="ref-text">Fiscalía General de Justicia de la Ciudad de México (FGJ-CDMX). (2024). <em>Sistema de Información Estadística Delictiva: Carpetas de investigación por despojo 2016–2024</em>. 3,643 carpetas y 55 restituciones (1.5%) en 2024. <a class="ref-url" href="https://www.fgjcdmx.gob.mx/" target="_blank">https://www.fgjcdmx.gob.mx/</a></div></div>
+    <div class="ref-entry" data-cat="acad"><span class="ref-cat acad">Académica</span><div class="ref-text">Salinas Arreortúa, L. (2024). Propiedades ilegales. Un estudio sociojurídico sobre el despojo en la Ciudad de México. <em>Estudios Demográficos y Urbanos, 39</em>(2), 375–412. El Colegio de México. <a class="ref-url" href="https://www.scielo.org.mx/scielo.php?pid=S0187-01732024000200009" target="_blank">https://www.scielo.org.mx/</a></div></div>
+    <div class="ref-entry" data-cat="acad"><span class="ref-cat acad">Académica</span><div class="ref-text">Zeigarnik, B. (1927). Über das Behalten von erledigten und unerledigten Handlungen. <em>Psychologische Forschung, 9</em>, 1–85. [Fundamento teórico del Efecto Zeigarnik aplicado a la estructura de open loops en Vicioculto.]</div></div>
+    <div class="ref-entry" data-cat="prensa"><span class="ref-cat prensa">Prensa</span><div class="ref-text">Aguilar, J. (2025, julio 29). Restituyen sólo 1.5% de los inmuebles invadidos en un año en CDMX. <em>La Crónica de Hoy</em>. <a class="ref-url" href="https://www.cronica.com.mx/metropoli/2025/07/29/restituyen-solo-15-de-los-inmuebles-invadidos-en-un-ano-en-cdmx/" target="_blank">https://www.cronica.com.mx/</a></div></div>
+    <div class="ref-entry" data-cat="prensa"><span class="ref-cat prensa">Prensa</span><div class="ref-text">Aguilar, J. (2026, abril 9). Restituyen 30% de inmuebles despojados en un año y denuncias crecen al doble. <em>La Crónica de Hoy</em>. <a class="ref-url" href="https://www.cronica.com.mx/metropoli/2026/04/09/restituyen-30-de-inmuebles-despojados-en-un-ano-y-denuncias-crecen-al-doble/" target="_blank">https://www.cronica.com.mx/</a></div></div>
+    <div class="ref-entry" data-cat="prensa"><span class="ref-cat prensa">Prensa</span><div class="ref-text">El Universal. (2025, mayo 25). "Sindicatos" controlan el despojo de inmuebles; organizaciones criminales operan en Edomex, Hidalgo y CDMX. <em>El Universal</em>. <a class="ref-url" href="https://www.eluniversal.com.mx/metropoli/sindicatos-controlan-el-despojo-de-inmuebles" target="_blank">https://www.eluniversal.com.mx/</a></div></div>
+    <div class="ref-entry" data-cat="prensa"><span class="ref-cat prensa">Prensa</span><div class="ref-text">Expansión Política. (2026, enero 19). Al grito de ¡Vivienda sí, desalojos no!, protestan en la Corte por votación del Artículo 60 en CDMX. <em>Expansión Política</em>. <a class="ref-url" href="https://politica.expansion.mx/cdmx/2026/01/19/protestan-corte-articulo-60-cdmx" target="_blank">https://politica.expansion.mx/</a></div></div>
+    <div class="ref-entry" data-cat="prensa"><span class="ref-cat prensa">Prensa</span><div class="ref-text">Heraldo Estado de México. (2025, julio 11). Denuncias por despojo en Edomex aumentan en 2025 tras el caso de doña Carlota. <em>Heraldo Estado de México</em>. <a class="ref-url" href="https://estadodemexico.heraldodemexico.com.mx/" target="_blank">https://estadodemexico.heraldodemexico.com.mx/</a></div></div>
+    <div class="ref-entry" data-cat="prensa"><span class="ref-cat prensa">Prensa</span><div class="ref-text">EjeCentral. (2026, febrero). Caso Carlota "N": condenan a implicado en despojo de inmueble en Chalco, Edomex. <em>Eje Central</em>. <a class="ref-url" href="https://www.ejecentral.com.mx/" target="_blank">https://www.ejecentral.com.mx/</a></div></div>
+    <div class="ref-entry" data-cat="prensa"><span class="ref-cat prensa">Prensa</span><div class="ref-text">La Silla Rota. (2026, enero 17). Despojo en CDMX: restituyen 430 inmuebles y aumentan 71% las extinciones de dominio. <em>La Silla Rota</em>. <a class="ref-url" href="https://lasillarota.com/" target="_blank">https://lasillarota.com/</a></div></div>
+    <div class="ref-entry" data-cat="inst"><span class="ref-cat inst">Institucional</span><div class="ref-text">Instituto Nacional del Suelo Sustentable (INSUS). (2025). <em>Trámites y programas de regularización territorial 2025</em>. Gobierno de México. <a class="ref-url" href="http://insus.gob.mx" target="_blank">http://insus.gob.mx</a></div></div>
+    <div class="ref-entry" data-cat="inst"><span class="ref-cat inst">Institucional</span><div class="ref-text">Secretaría de Desarrollo Agrario, Territorial y Urbano (SEDATU). (2025). <em>Programa para Regularizar Asentamientos Humanos (PRAH) 2025</em>. <a class="ref-url" href="https://www.gob.mx/sedatu" target="_blank">https://www.gob.mx/sedatu</a></div></div>
+    <div class="ref-entry" data-cat="inst"><span class="ref-cat inst">Institucional</span><div class="ref-text">Suprema Corte de Justicia de la Nación (SCJN). (2019–2026). <em>Acción de Inconstitucionalidad 73/2019. Artículo 60, Ley Constitucional de Derechos Humanos de la CDMX</em>. <a class="ref-url" href="https://www.scjn.gob.mx" target="_blank">https://www.scjn.gob.mx</a></div></div>
+    <div class="ref-entry" data-cat="inst"><span class="ref-cat inst">Institucional</span><div class="ref-text">Fiscalía General de Justicia del Estado de México (FGJEM). (2025–2026). <em>Operación Restitución: Atención a víctimas de despojo inmobiliario</em>. <a class="ref-url" href="https://fgjem.edomex.gob.mx" target="_blank">https://fgjem.edomex.gob.mx</a></div></div>
+    <div class="ref-entry" data-cat="inst"><span class="ref-cat inst">Institucional</span><div class="ref-text">Gobierno de la Ciudad de México — Secretaría de Gobierno. (2025). <em>Gabinete de Prevención y Atención a los Despojos de la Ciudad de México: Informe de gestión 2025</em>. <a class="ref-url" href="https://www.cdmx.gob.mx" target="_blank">https://www.cdmx.gob.mx</a></div></div>
+    <div class="ref-entry" data-cat="inst"><span class="ref-cat inst">Institucional</span><div class="ref-text">Comisión de Derechos Humanos de la Ciudad de México (CDHCM). (2025). <em>Quejas y recomendaciones en materia de vivienda y desalojos forzosos 2024–2025</em>. <a class="ref-url" href="https://cdhcm.org.mx" target="_blank">https://cdhcm.org.mx</a></div></div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-logo"><span class="vc">VICIOCULTO</span> · Dashboard de Producción 2026</div>
+    <div class="foot-note">Escaleta de producción para programa de alta retención. Marco legal vigente al primer semestre de 2026. Datos SESNSP, ENVIPE, FGJ-CDMX. Verificar vigencia de decretos y estadísticas antes de grabación. Uso interno de producción.</div>
+  </div>
+</footer>
+
+<script>
+function switchTab(group,panel,btn){
+  const wrap=btn.closest('.wrap')||btn.closest('body');
+  const scope=btn.closest('.caso-body')||btn.closest('.esc-body')||btn.closest('.wrap')||document;
+  scope.querySelectorAll('[id^="'+group+'-"]').forEach(p=>p.classList.remove('active'));
+  btn.closest('.tab-bar').querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  const t=document.getElementById(group+'-'+panel);
+  if(t)t.classList.add('active');
+  btn.classList.add('active');
+}
+function toggleEsc(id){
+  const b=document.getElementById(id);
+  const c=document.getElementById('car-'+id);
+  const o=b.classList.contains('active');
+  b.classList.toggle('active',!o);
+  if(c)c.classList.toggle('open-caret',!o);
+}
+function toggleCaso(id){
+  const c=document.getElementById(id);
+  const o=c.classList.contains('active');
+  document.querySelectorAll('.caso').forEach(el=>{
+    el.classList.remove('active');
+    const cr=el.querySelector('.caret');if(cr)cr.classList.remove('open-caret');
+    const b=el.querySelector('.caso-body');if(b)b.style.display='none';
+  });
+  if(!o){
+    c.classList.add('active');
+    const body=document.getElementById('body-'+id);
+    if(body)body.style.display='block';
+    const car=document.getElementById('car-'+id);
+    if(car)car.classList.add('open-caret');
+  }
+}
+function toggleCandado(id){
+  const c=document.getElementById(id);
+  const b=document.getElementById('body-'+id);
+  const cr=document.getElementById('car-'+id);
+  const o=c.classList.contains('active');
+  c.classList.toggle('active',!o);
+  if(b)b.style.display=o?'none':'block';
+  if(cr)cr.classList.toggle('open-caret',!o);
+}
+function filterRef(cat,btn){
+  document.querySelectorAll('.rfbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.ref-entry').forEach(e=>{
+    e.classList.toggle('hidden',cat!=='all'&&e.dataset.cat!==cat);
+  });
+}
+function setupSpy(){
+  const links=document.querySelectorAll('.nl');
+  const ids=['hook','dataroom','casos','blindaje','issocial','cierre','bufalo','referencias'];
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.remove('active'));
+        const lk=document.querySelector('.nl[href="#'+e.target.id+'"]');
+        if(lk)lk.classList.add('active');
+      }
+    });
+  },{threshold:.15,rootMargin:'-60px 0px -55% 0px'});
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el);});
+}
+function animateBars(){
+  const fills=document.querySelectorAll('.bar-fill');
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const w=e.target.getAttribute('data-w');
+        if(w)e.target.style.width=w;
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  fills.forEach(f=>{
+    const w=f.style.width;
+    f.setAttribute('data-w',w);
+    f.style.width='0%';
+    io.observe(f);
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  setupSpy();
+  animateBars();
+  toggleEsc('bloque-01');
+});
+</script>
+</body>
+</html>

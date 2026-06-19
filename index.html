@@ -94,6 +94,29 @@ nav{position:sticky;top:0;z-index:300;background:rgba(12,11,9,.97);backdrop-filt
 .mystery-box .my-lbl{font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);display:block;margin-bottom:4px}
 .purple-box{background:rgba(139,109,201,.05);border:.5px solid var(--purple);border-left:3px solid var(--purple);border-radius:0 var(--r) var(--r) 0;padding:.8rem 1.1rem;margin-bottom:.75rem;font-size:13.5px;color:var(--text);line-height:1.7}
 .purple-box .pu-lbl{font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--purple);display:block;margin-bottom:4px}
+.sponsor-read{background:linear-gradient(180deg,rgba(74,127,191,.07),rgba(74,127,191,.03));border:.5px solid #4a7fbf;border-left:3px solid #4a7fbf;border-radius:0 var(--r) var(--r) 0;padding:.9rem 1.1rem;margin-bottom:.7rem}
+.sponsor-read .sp-lbl{font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:#4a7fbf;display:flex;align-items:center;gap:6px;margin-bottom:.6rem}
+.sponsor-read .sp-lbl .sp-brand{color:var(--text);font-weight:700;font-family:var(--fh);letter-spacing:.02em}
+.sp-beat{display:grid;grid-template-columns:74px 1fr;gap:.7rem;padding:.45rem 0;border-bottom:.5px solid rgba(74,127,191,.18);align-items:start}
+.sp-beat:last-child{border-bottom:none}
+.sp-beat-k{font-size:9.5px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:#4a7fbf;padding-top:2px;line-height:1.4}
+.sp-beat-v{font-size:13px;color:var(--text2);line-height:1.65}
+.sp-beat-v em{color:var(--text);font-style:italic}
+.sp-beat-v strong{color:var(--text);font-weight:500}
+.sp-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:.55rem}
+.sp-pill{font-size:9.5px;font-weight:500;color:#4a7fbf;border:.5px solid rgba(74,127,191,.4);border-radius:var(--r3);padding:2px 8px}
+.rep-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:1.5rem}
+.rep-card{background:var(--bg2);padding:1.3rem 1.5rem}
+.rep-card h4{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.rep-li{display:flex;gap:9px;padding:6px 0;border-bottom:.5px solid var(--line);font-size:12.5px;color:var(--text2);line-height:1.55}
+.rep-li:last-child{border-bottom:none}
+.rep-li b{color:var(--text);font-weight:500}
+.rep-ic{color:var(--accent);flex-shrink:0}
+.gear{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:.5px solid var(--line);border-radius:var(--r2);overflow:hidden;margin-bottom:1.5rem}
+.gear-c{background:var(--bg2);padding:1.1rem 1.3rem}
+.gear-n{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--text);margin-bottom:.3rem}
+.gear-r{font-size:11.5px;color:var(--muted);margin-bottom:.15rem}
+.gear-r b{color:var(--text2);font-weight:500}
 .dt{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1.75rem}
 .dt th{text-align:left;font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:.65rem 1rem;border-bottom:.5px solid var(--line2);background:var(--bg3)}
 .dt td{padding:.85rem 1rem;border-bottom:.5px solid var(--line);vertical-align:top;line-height:1.55;color:var(--text2)}
@@ -276,6 +299,7 @@ footer{border-top:.5px solid var(--line);padding:3rem 2rem;margin-top:2rem}
   <div class="hero-bg-txt">VC</div>
   <div class="hero-podcast-tag"><span class="dot"></span><span class="vc-name">VICIOCULTO</span><span style="color:var(--muted);margin:0 4px">·</span><span>Temporada 2026 · Episodio Especial</span></div>
   <div class="hero-title"><span class="acc">Despojos</span> &amp;<br><span class="acc">Desalojos</span><br><span class="dim">en México</span></div>
+  <div style="font-family:var(--fh);font-size:clamp(13px,1.6vw,17px);font-weight:700;font-style:italic;color:var(--gold);letter-spacing:.01em;margin:-.75rem 0 1.75rem">"Lo que existe pero no se nombra."</div>
   <div class="hero-grid">
     <div>
       <p class="hero-desc">Dashboard de producción para <strong>Vicioculto</strong> — programa de <strong>25–30 minutos</strong> de alta retención algorítmica. Guion en dos formatos separados: <strong>escaleta de podcast con invitado</strong> y <strong>guion documental en solitario</strong>. El tema que el sector inmobiliario no quiere que discutas en cámara.</p>
@@ -301,6 +325,7 @@ footer{border-top:.5px solid var(--line);padding:3rem 2rem;margin-top:2rem}
   <div class="tab-bar">
     <button class="tab-btn active" onclick="switchTab('hook','escaleta',this)">📋 Escaleta · Podcast con Invitado</button>
     <button class="tab-btn" onclick="switchTab('hook','documental',this)">🎬 Guion Documental · Solo</button>
+    <button class="tab-btn" onclick="switchTab('hook','reportaje',this)">📰 Reportaje Periodístico · 10–15 min</button>
   </div>
   <div id="hook-escaleta" class="tab-panel active">
     <div class="esc-container">
@@ -354,6 +379,13 @@ footer{border-top:.5px solid var(--line);padding:3rem 2rem;margin-top:2rem}
           <div class="guion-line"><span class="speaker inv">INVITADO</span><p><strong>El despojo es el crimen.</strong> El desalojo es, en teoría, el remedio. El problema es que ese remedio tarda meses, a veces años, y en México, el 82.8% de las veces nunca llega. La brecha entre el crimen y el remedio es exactamente donde operan los sindicatos del despojo.</p></div>
           <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:10 seg</span>Split screen: "DESPOJO" rojo / "DESALOJO" azul. Artículo sobrepuesto con marcador digital fosforescente. Sonido: sello notarial.</div>
           <div class="alert-box"><span class="al-lbl">🎯 Pico de dopamina #1 — inyectar aquí</span>"La duplicidad de folios reales en el Registro Público no es un error de sistema. Es una brecha que se explota deliberadamente. En 2025, la Fiscalía de la CDMX documentó casos donde el mismo inmueble tenía dos escrituras con números distintos. Las dos eran legales. Las dos eran falsas."</div>
+          <div class="sponsor-read">
+            <span class="sp-lbl">🤝 Sponsor read integrado · Ep. 1 · <span class="sp-brand">Altaltium — Soluciones Legales</span> · ~90 seg</span>
+            <div class="sp-beat"><div class="sp-beat-k">Puente · 5–8 s</div><div class="sp-beat-v">CONDUCTOR: <em>"Y justo de esto que estamos hablando — de esa brecha entre el folio real y la realidad — quiero contarte algo, porque hoy el episodio lo hace posible alguien que se dedica precisamente a cerrar esa brecha."</em></div></div>
+            <div class="sp-beat"><div class="sp-beat-k">Producto · 30–40 s</div><div class="sp-beat-v">DANIEL (voz propia): <em>"Altaltium Real Estate Solutions tiene una división de Soluciones Legales que hace exactamente lo que acabamos de describir: auditan tu folio real, rastrean anotaciones preventivas que tú ni sabías que existían, y si ya estás en un litigio de despojo, te arman la defensa con abogados que solo hacen esto. No es un despacho que ve de todo un poco. Es gente que vive y respira derecho inmobiliario. La razón por la que confío en recomendarlos es simple: revisan el inmueble antes de que firmes, no después de que ya tienes el problema encima."</em></div></div>
+            <div class="sp-beat"><div class="sp-beat-k">CTA · 8–10 s</div><div class="sp-beat-v">DANIEL: <em>"Te dejo el link de Altaltium — Soluciones Legales fijado en la descripción y en el primer comentario. Entra hoy y pide tu auditoría: revisar tu folio cuesta una tarde; recuperar tu casa cuesta años. Gracias a Altaltium por hacer posible este episodio de Vicioculto."</em></div></div>
+            <div class="sp-meta"><span class="sp-pill">Voz: Daniel</span><span class="sp-pill">Posición: post bloque-02 (~min 3)</span><span class="sp-pill">Tono: continuidad, no corte comercial</span><span class="sp-pill">Sin cortinilla ni cambio de música</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -367,6 +399,113 @@ footer{border-top:.5px solid var(--line);padding:3rem 2rem;margin-top:2rem}
     <div class="guion-line"><span class="speaker dir">PRESENTADOR — DISTINCIÓN CONCEPTUAL</span><p>Para entender todo lo que vamos a ver hoy, necesitas distinguir dos figuras que el mercado trata como sinónimos. <strong>El despojo es el crimen:</strong> la ocupación ilegal de un inmueble ajeno, tipificada en el artículo 395 del Código Penal Federal. <strong>El desalojo es el remedio:</strong> el procedimiento judicial del artículo 1017 del Código Nacional de Procedimientos Civiles. La diferencia parece clara en papel. En la práctica, la línea se borra con impunidad y burocracia.</p></div>
     <div class="guion-line"><span class="speaker dir">PRESENTADOR — PICO DE DOPAMINA #1</span><p>Antes de seguir: el número que define todo lo que vas a escuchar hoy. En 2024, se presentaron 3,643 carpetas por despojo en la Ciudad de México. De esas, las autoridades lograron restituir el inmueble en exactamente <strong>55 casos.</strong> El uno punto cinco por ciento. <em>Eso no es un sistema que falla. Es un sistema que funciona — solo que no para ti.</em></p></div>
     <div class="broll-note"><span class="broll-lbl">📽 B-Roll · 0:12 seg · impacto total</span>Gráfico a pantalla completa. Barra roja: 98.5%. Línea blanca: 1.5%. Pausa 2 seg. Grave sostenido. Corte a negro 1 seg. Regreso a presentador.</div>
+    <div class="sponsor-read">
+      <span class="sp-lbl">🤝 Sponsor read integrado · Ep. 1 · <span class="sp-brand">Altaltium — Soluciones Legales</span> · ~90 seg</span>
+      <div class="sp-beat"><div class="sp-beat-k">Puente · 5–8 s</div><div class="sp-beat-v">PRESENTADOR (continúa sin cambio de tono): <em>"Ese 1.5% es el dueño que no tuvo a nadie de su lado a tiempo. Y aquí es donde quiero ser honesto contigo sobre por qué este episodio existe."</em></div></div>
+      <div class="sp-beat"><div class="sp-beat-k">Producto · 30–40 s</div><div class="sp-beat-v">DANIEL (voz propia, mismo plano): <em>"Vicioculto de hoy es posible gracias a Altaltium Real Estate Solutions, y en específico a su división de Soluciones Legales. Lo que ellos hacen es lo que a la víctima del 1.5% le habría cambiado la historia: auditan el folio real, detectan los litigios escondidos sobre un predio antes de que compres, y si ya hay un despojo en curso, te montan la defensa con abogados especializados solo en esto. No los recomiendo porque me patrocinen. Acepté el patrocinio porque hacen exactamente lo que llevo media hora diciéndote que tienes que hacer."</em></div></div>
+      <div class="sp-beat"><div class="sp-beat-k">CTA · 8–10 s</div><div class="sp-beat-v">PRESENTADOR: <em>"Link de Altaltium — Soluciones Legales en la descripción, primer renglón. No esperes a tener el problema enfrente: pide la auditoría de tu inmueble esta semana. Gracias a Altaltium por sostener este tipo de periodismo. Seguimos."</em></div></div>
+      <div class="sp-meta"><span class="sp-pill">Voz: Daniel</span><span class="sp-pill">Posición: tras pico #1 (~min 4)</span><span class="sp-pill">Mismo plano, sin fade</span><span class="sp-pill">Imperceptible como comercial</span></div>
+    </div>
+  </div>
+
+  <!-- TAB REPORTAJE PERIODÍSTICO -->
+  <div id="hook-reportaje" class="tab-panel">
+    <div class="purple-box"><span class="pu-lbl">📰 Reportaje periodístico · 10–15 min · Formato de campo</span>Pieza más corta y ágil que el documental. Estructura de reportaje televisivo/digital: narración en off + entrevistas reales en locación + datos en pantalla. Producción ligera (skeleton crew). El conductor es reportero, no fiscal: pregunta para que el entrevistado revele, no para acusar.</div>
+
+    <div class="sec-eye" style="margin-top:1.5rem">Estructura del reportaje</div>
+    <div class="esc-container" style="margin-top:.75rem">
+      <div class="esc-block" id="rep-b1">
+        <div class="esc-header" onclick="toggleEsc('rep-b1')"><div class="esc-num">01</div><div class="esc-meta"><div class="esc-ttl">Cold open en locación · La puerta con candado <span class="caret" id="car-rep-b1">▾</span></div><div class="esc-sub">Apertura en campo · 0:00 – 1:30</div></div><div class="esc-time">0:00 – 1:30</div></div>
+        <div class="esc-body" id="body-rep-b1">
+          <div class="guion-line" style="margin-top:1.25rem"><span class="speaker dir">REPORTERO — VOZ EN OFF sobre imagen de fachada real con candado</span><p>Esta puerta tiene un candado que su dueña no puso. Detrás vivían tres generaciones de una familia. Hoy viven personas que llegaron una madrugada con papeles que un juez —a 90 kilómetros de aquí— firmó. Esto no es un caso aislado: en México, en 2024, se denunciaron 28,364 despojos. Y solo una fracción mínima terminó con la familia de vuelta en su casa.</p></div>
+          <div class="broll-note"><span class="broll-lbl">📽 Plano de campo · 0:12 seg</span>Caminata del reportero hacia la puerta. Plano del candado. Vecinos mirando de lejos (rostros difuminados si no firman cesión de derechos).</div>
+          <div class="guion-line"><span class="speaker dir">REPORTERO — a cámara, en la calle</span><p>Soy [nombre], esto es <strong>Vicioculto</strong>, y durante las próximas dos semanas seguimos el rastro de un negocio que mueve millones y destruye familias: el despojo inmobiliario.</p></div>
+        </div>
+      </div>
+      <div class="esc-block" id="rep-b2">
+        <div class="esc-header" onclick="toggleEsc('rep-b2')"><div class="esc-num">02</div><div class="esc-meta"><div class="esc-ttl">El dato y el mecanismo · Cómo opera <span class="caret" id="car-rep-b2">▾</span></div><div class="esc-sub">Narración en off + infografía + voz de experto · 1:30 – 5:00</div></div><div class="esc-time">1:30 – 5:00</div></div>
+        <div class="esc-body" id="body-rep-b2">
+          <div class="guion-line" style="margin-top:1.25rem"><span class="speaker dir">REPORTERO — OFF sobre infografía animada</span><p>El despojo es un delito —artículo 395 del Código Penal Federal—. El desalojo es un procedimiento judicial. Suenan parecido. No lo son. Y entre uno y otro existe una zona gris donde operan los llamados "sindicatos del despojo": redes con prospectores, notarios coludidos y abogados que convierten una casa ajena en un activo propio.</p></div>
+          <div class="guion-line"><span class="speaker inv">ENTREVISTA — Abogado/a inmobiliario (busto, plano fijo)</span><p>[Pregunta del reportero en off: "¿Qué tan organizado está esto realmente?"] El entrevistado explica las tres fases: selección de la víctima, ocupación con documentación falsa, y blindaje procesal mediante amparos. Duración del corte: 40–60 seg.</p></div>
+          <div class="broll-note"><span class="broll-lbl">📽 Recurso · datos en pantalla</span>Lower-thirds con cifras SESNSP/FGJ-CDMX. Mapa de calor de alcaldías. Documento real escaneado con dato sensible tapado.</div>
+          <div class="sponsor-read">
+            <span class="sp-lbl">🤝 Sponsor read integrado · Ep. 1 · <span class="sp-brand">Altaltium — Soluciones Legales</span> · ~90 seg</span>
+            <div class="sp-beat"><div class="sp-beat-k">Puente · 5–8 s</div><div class="sp-beat-v">REPORTERO (OFF, transición natural desde el mecanismo): <em>"Si todo esto se evita revisando el inmueble a tiempo, ¿quién lo hace? Esa pregunta me llevó al patrocinador de este reportaje."</em></div></div>
+            <div class="sp-beat"><div class="sp-beat-k">Producto · 30–40 s</div><div class="sp-beat-v">DANIEL (voz propia): <em>"Altaltium Real Estate Solutions, con su división de Soluciones Legales, hace la auditoría que la mayoría se salta: revisan el folio real, los litigios ocultos y la cadena de propiedad antes de que firmes. Y si ya hay un despojo, su equipo legal litiga estos casos específicamente. Lo que viste en este reportaje es el problema; ellos son una de las pocas respuestas serias que existen."</em></div></div>
+            <div class="sp-beat"><div class="sp-beat-k">CTA · 8–10 s</div><div class="sp-beat-v">DANIEL: <em>"Link en la descripción para agendar tu revisión con Altaltium — Soluciones Legales. Hazlo antes de tu próxima compra, no después. Gracias a Altaltium por hacer posible este reportaje de Vicioculto."</em></div></div>
+            <div class="sp-meta"><span class="sp-pill">Voz: Daniel</span><span class="sp-pill">Posición: tras el mecanismo (~min 4)</span><span class="sp-pill">Entra desde el off, sin cortinilla</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="esc-block" id="rep-b3">
+        <div class="esc-header" onclick="toggleEsc('rep-b3')"><div class="esc-num">03</div><div class="esc-meta"><div class="esc-ttl">El rostro humano · Testimonio de víctima <span class="caret" id="car-rep-b3">▾</span></div><div class="esc-sub">Entrevista central · 5:00 – 9:30</div></div><div class="esc-time">5:00 – 9:30</div></div>
+        <div class="esc-body" id="body-rep-b3">
+          <div class="guion-line" style="margin-top:1.25rem"><span class="speaker inv">ENTREVISTA — Víctima de despojo (con protección de identidad si lo pide)</span><p>Bloque emocional del reportaje. El reportero deja hablar. Preguntas abiertas: "¿Cómo se enteró?", "¿Qué le dijo la autoridad?", "¿Dónde vive ahora?". Cortes de 30–90 seg intercalados con B-roll del lugar. Si la víctima teme represalias: silueta a contraluz, voz alterada, o solo manos y documentos.</p></div>
+          <div class="broll-note"><span class="broll-lbl">📽 Recurso · sensibilidad</span>Nunca grabar el rostro sin consentimiento firmado. Plano de manos sosteniendo escrituras. Detalle de fotos familiares. Silencios mantenidos: el silencio comunica.</div>
+          <div class="guion-line"><span class="speaker dir">REPORTERO — OFF de transición</span><p>Conecta el testimonio individual con el dato sistémico: "La historia de [nombre/inicial] se repite miles de veces al año. Y la mayoría nunca llega ni a una cámara ni a un juez."</p></div>
+        </div>
+      </div>
+      <div class="esc-block" id="rep-b4">
+        <div class="esc-header" onclick="toggleEsc('rep-b4')"><div class="esc-num">04</div><div class="esc-meta"><div class="esc-ttl">Cierre accionable + tagline de despedida <span class="caret" id="car-rep-b4">▾</span></div><div class="esc-sub">Resolución y CTA · 9:30 – 13:00</div></div><div class="esc-time">9:30 – 13:00</div></div>
+        <div class="esc-body" id="body-rep-b4">
+          <div class="guion-line" style="margin-top:1.25rem"><span class="speaker dir">REPORTERO — a cámara, cierre</span><p>Tres cosas que cualquiera puede hacer hoy: verificar su folio real, revisar si su predio tiene carpetas en la Fiscalía, y nunca —nunca— entrar por la fuerza a recuperar un inmueble ocupado. El sistema castiga primero al que se equivoca de forma.</p></div>
+          <div class="guion-line"><span class="speaker dir">REPORTERO — TAGLINE DE DESPEDIDA · sello de marca</span><p><strong>"En el mundo de los bienes raíces, el que no sabe, paga. En Vicioculto, nos adelantamos a la jugada. Aprende, invierte y construye sin miedo. ¡Nos vemos a la próxima!"</strong></p></div>
+          <div class="broll-note"><span class="broll-lbl">📽 Tagline visual · placa final</span>Cierre a negro con la frase de marca en pantalla: <strong>"Lo que existe pero no se nombra."</strong> Logo Vicioculto. Mantener 3 seg.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-eye" style="margin-top:2rem">Guía de producción de campo</div>
+    <div class="sec-title" style="font-size:clamp(18px,2.3vw,28px);margin-bottom:1.25rem">Cómo Levantar este<br><span class="purple">Reportaje con Poco Equipo</span></div>
+
+    <div class="rep-grid">
+      <div class="rep-card">
+        <h4>🎤 Cómo realizar las entrevistas</h4>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Construye confianza antes de grabar.</b> Primera reunión sin cámara. Explica para qué es, dónde se publicará y qué protección de identidad ofreces.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Consentimiento firmado siempre.</b> Cesión de derechos de imagen. Para víctimas, ofrece anonimato real: silueta, voz alterada, iniciales.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Preguntas abiertas, no inductivas.</b> "Cuénteme qué pasó" rinde más que "¿le robaron la casa?". Deja silencios; la gente los llena.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>No prometas lo que no puedes cumplir.</b> No eres autoridad ni abogado. No ofrezcas resolver su caso.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Verifica todo testimonio.</b> Pide documentos, carpetas, números de expediente. Una víctima real tiene papeles.</div></div>
+      </div>
+      <div class="rep-card">
+        <h4>👥 A quién entrevistar</h4>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Abogados inmobiliarios y litigantes.</b> Los más accesibles y con visión de patrón. Empieza por aquí.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Notarios y peritos en Registro Público.</b> Explican el fraude documental con autoridad técnica.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Víctimas directas.</b> El corazón del reportaje, pero el contacto más difícil y delicado.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Líderes vecinales y colectivos de vivienda.</b> Puerta de entrada a víctimas que no hablarían con un extraño.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Funcionarios (Gabinete contra Despojos, FGJ).</b> Dan la versión institucional y datos oficiales en cámara.</div></div>
+      </div>
+    </div>
+
+    <div class="rep-grid">
+      <div class="rep-card">
+        <h4>📍 Dónde encontrar víctimas (con cuidado ético)</h4>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Plantones y colectivos.</b> República de Cuba 11, Antonio Caso, asambleas de barrio. Ahí están organizadas y dispuestas a hablar.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Plataforma "Mafia del Despojo CDMX"</b> y grupos de denuncia en redes sociales.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Gabinete de Atención a Despojos</b> y comisiones de DDHH: pueden contactar víctimas dispuestas (vía intermediario, no datos directos).</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Despachos de abogados</b> que litigan estos casos: pueden presentarte a clientes que quieran visibilizar su caso.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Periodistas locales</b> que ya cubrieron casos. Colaboración antes que competencia.</div></div>
+      </div>
+      <div class="rep-card">
+        <h4>🗺️ Locaciones para grabar</h4>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Exteriores de inmuebles despojados</b> (vía pública, sin invadir). El candado y la fachada cuentan la historia.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Centro Histórico y colonias clave:</b> Narvarte, Del Valle, Doctores, San Rafael. Alta densidad de casos.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Registro Público de la Propiedad y juzgados</b> (exteriores). Contexto institucional visual.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Lugar neutro y seguro</b> para entrevistar víctimas: su nueva vivienda, un café tranquilo, o set controlado con fondo neutro.</div></div>
+        <div class="rep-li"><span class="rep-ic">›</span><div><b>Evita</b> grabar dentro de inmuebles en disputa: riesgo legal y físico.</div></div>
+      </div>
+    </div>
+
+    <div class="sec-eye" style="margin-top:1.5rem">Breakdown de materiales · Skeleton crew</div>
+    <div class="gear">
+      <div class="gear-c"><div class="gear-n">📱 Cámara principal</div><div class="gear-r"><b>iPhone 12</b> (o superior)</div><div class="gear-r">Graba en 4K/24fps · Modo Cine para entrevistas · bloquea exposición y foco manual</div></div>
+      <div class="gear-c"><div class="gear-n">🎙️ Audio</div><div class="gear-r"><b>Micrófono lavalier</b> (Rode Wireless GO / solapa con cable)</div><div class="gear-r">El audio importa más que la imagen. Nunca confíes en el mic del teléfono para entrevistas.</div></div>
+      <div class="gear-c"><div class="gear-n">🔦 Estabilización</div><div class="gear-r"><b>Gimbal</b> o trípode compacto</div><div class="gear-r">Trípode para entrevistas, gimbal para caminatas y planos de fachada.</div></div>
+      <div class="gear-c"><div class="gear-n">💡 Iluminación</div><div class="gear-r"><b>1 panel LED portátil</b> + reflector</div><div class="gear-r">Suficiente para entrevista. Aprovecha luz natural en exteriores.</div></div>
+      <div class="gear-c"><div class="gear-n">🔋 Energía</div><div class="gear-r"><b>Power bank</b> + baterías extra</div><div class="gear-r">Grabar en 4K drena la batería del iPhone rápido. Lleva doble respaldo.</div></div>
+      <div class="gear-c"><div class="gear-n">👤 Crew mínimo</div><div class="gear-r"><b>1–2 personas</b></div><div class="gear-r">Reportero + 1 operador de cámara/audio. Perfil bajo: menos equipo = más acceso y menos riesgo en zona sensible.</div></div>
+    </div>
+    <div class="purple-box"><span class="pu-lbl">⚠️ Nota de seguridad de campo</span>El despojo está ligado a redes criminales. No grabes confrontando ocupantes. No reveles ubicación exacta de víctimas. Avisa a alguien de tu ruta. En zona de riesgo, equipo mínimo y discreto: un iPhone llama menos la atención que una cámara de cine, y eso aquí es una ventaja de seguridad, no solo de presupuesto.</div>
   </div>
 </div>
 
@@ -380,19 +519,19 @@ footer{border-top:.5px solid var(--line);padding:3rem 2rem;margin-top:2rem}
     <div class="kpi-c"><div class="kpi-n" style="color:var(--gold)">3,890</div><div class="kpi-l">Carpetas CDMX 2022</div></div>
     <div class="kpi-c"><div class="kpi-n" style="color:var(--gold)">3,800</div><div class="kpi-l">Carpetas CDMX 2023</div></div>
     <div class="kpi-c"><div class="kpi-n" style="color:var(--accent)">3,643</div><div class="kpi-l">Carpetas CDMX 2024</div><div class="kpi-s">55 restituciones = 1.5%</div></div>
-    <div class="kpi-c"><div class="kpi-n" style="color:var(--teal)">4,936</div><div class="kpi-l">Denuncias EdoMex 2024</div><div class="kpi-s">Récord absoluto</div></div>
-    <div class="kpi-c"><div class="kpi-n" style="color:var(--accent)">+103<sup>%</sup></div><div class="kpi-l">Alza denuncias CDMX</div><div class="kpi-s">Enero 2026 vs. 2025</div></div>
+    <div class="kpi-c"><div class="kpi-n" style="color:var(--teal)">4,616</div><div class="kpi-l">Denuncias EdoMex 2024 (SESNSP)</div><div class="kpi-s">Líder nacional</div></div>
+    <div class="kpi-c"><div class="kpi-n" style="color:var(--accent)">+121<sup>%</sup></div><div class="kpi-l">Alza denuncias CDMX</div><div class="kpi-s">2024→2025 (349→771)</div></div>
   </div>
   <table class="dt">
     <thead><tr><th>Año</th><th>CDMX</th><th>EdoMex</th><th>Nacional</th><th>Restituciones CDMX</th><th>Impunidad</th></tr></thead>
     <tbody>
-      <tr><td><span class="tn">2022</span></td><td>3,890<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:88%"></div></div></div></td><td>4,752<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:90%"></div></div></div></td><td>~26,000 est.</td><td><span class="badge badge-red">~115 (2.9%)</span></td><td><span class="badge badge-red">~80%</span></td></tr>
-      <tr><td><span class="tn">2023</span></td><td>3,800<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:86%"></div></div></div></td><td>4,886<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:93%"></div></div></div></td><td>~27,100 est.</td><td><span class="badge badge-red">~90 (2.4%)</span></td><td><span class="badge badge-red">82.8%</span></td></tr>
-      <tr><td><span class="tn">2024</span></td><td>3,643<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:82%"></div></div></div></td><td>4,936<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:100%"></div></div></div></td><td>28,364 <span class="badge badge-red">Récord</span></td><td><span class="badge badge-red">55 (1.5%) 🔴</span></td><td><span class="badge badge-red">&gt;82%</span></td></tr>
-      <tr><td><span class="tn">2025</span></td><td>~3,800 est.<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:86%"></div></div></div></td><td>~5,500 est.<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:100%"></div></div></div></td><td>&gt;29,000 proy.</td><td><span class="badge badge-teal">430 acum. (Gabinete)</span></td><td><span class="badge badge-gold">&gt;70% est.</span></td></tr>
-      <tr><td><span class="tn">2026 H1</span></td><td>+103% ene.<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:95%"></div></div></div></td><td>Tendencia rec.</td><td>&gt;30,000 proy.</td><td><span class="badge badge-gold">En proceso</span></td><td><span class="badge badge-red">Por confirmar</span></td></tr>
+      <tr><td><span class="tn">2022</span></td><td>3,890<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:88%"></div></div></div></td><td>~4,400<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:88%"></div></div></div></td><td>~26,000 est.</td><td><span class="badge badge-red">~115 (2.9%)</span></td><td><span class="badge badge-red">~80%</span></td></tr>
+      <tr><td><span class="tn">2023</span></td><td>3,800<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:86%"></div></div></div></td><td>4,399<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:88%"></div></div></div></td><td>~27,100 est.</td><td><span class="badge badge-red">~90 (2.4%)</span></td><td><span class="badge badge-red">82.8%</span></td></tr>
+      <tr><td><span class="tn">2024</span></td><td>3,643<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:82%"></div></div></div></td><td>4,616<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:100%"></div></div></div></td><td>28,364 <span class="badge badge-red">Récord</span></td><td><span class="badge badge-red">55 (1.5%) 🔴</span></td><td><span class="badge badge-red">&gt;82%</span></td></tr>
+      <tr><td><span class="tn">2025</span></td><td>771 (FGJ amb.)<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--gold);width:70%"></div></div></div></td><td>~5,500 proy.<div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="background:var(--accent);width:100%"></div></div></div></td><td>&gt;29,000 proy.</td><td><span class="badge badge-teal">230 (30%) · 430 acum.</span></td><td><span class="badge badge-gold">&gt;70% est.</span></td></tr>
     </tbody>
   </table>
+  <div class="broll-note" style="border-color:var(--muted);border-left-color:var(--muted);color:var(--muted2);background:var(--bg3)"><span class="broll-lbl" style="color:var(--muted)">📊 Nota sobre las fuentes de datos</span>Conviven dos conteos oficiales distintos: <strong>FGJ-CDMX</strong> (carpetas de la Fiscalía capitalina: 3,643 en 2024, 4,437 pico en 2021) y <strong>SESNSP</strong> (registro nacional, donde EdoMex lidera con 4,616 y CDMX figura con 3,387 en 2024). Las cifras de 771 denuncias y 30% de restitución (2025) corresponden a la Fiscalía de Delitos Ambientales y Protección Urbana. No son contradictorias: miden universos distintos. Verificar la fuente exacta antes de citar en cámara.</div>
   <div class="sec-eye" style="margin-top:2rem">Anatomía del fraude</div>
   <div class="sec-title" style="font-size:clamp(18px,2.3vw,28px);margin-bottom:1rem">Sindicatos del Despojo:<br><span class="gold">Cómo Operan en 2026</span></div>
   <div class="tab-bar"><button class="tab-btn active" onclick="switchTab('sind','escaleta',this)">📋 Escaleta Podcast</button><button class="tab-btn" onclick="switchTab('sind','documental',this)">🎬 Guion Documental</button></div>
@@ -466,14 +605,14 @@ footer{border-top:.5px solid var(--line);padding:3rem 2rem;margin-top:2rem}
     <div class="caso" id="caso-otros">
       <div class="caso-h" onclick="toggleCaso('caso-otros')">
         <div class="caso-date">2022–2026</div>
-        <div><div class="caso-title">Cronología Complementaria · CDMX y EdoMex</div><div class="caso-loc">Casa Octavio Paz · Antonio Caso 104 · Escalada enero 2026</div><div class="tag-row"><span class="tc">Cuauhtémoc</span><span class="tc">S. Rafael</span><span class="tc hot">+103% ene. 2026</span></div></div>
+        <div><div class="caso-title">Cronología Complementaria · CDMX y EdoMex</div><div class="caso-loc">Casa Octavio Paz · Antonio Caso 104 · Escalada 2025</div><div class="tag-row"><span class="tc">Cuauhtémoc</span><span class="tc">S. Rafael</span><span class="tc hot">Denuncias +121% 2024→2025</span></div></div>
         <span class="caret" id="car-caso-otros">▾</span>
       </div>
       <div class="caso-body" id="body-caso-otros">
         <div class="steps" style="margin-top:1.25rem">
           <div class="step"><div class="step-n">22</div><div><div class="step-t">Antonio Caso 104, Colonia San Rafael · 2022–2023</div><div class="step-d">Edificio en litigio crónico desde 2006. Más de 15 años sin resolución. Alcaldía Cuauhtémoc acumula el mayor número de carpetas de despojo de la CDMX.</div><div class="step-tl">→ Guion: "el litigio eterno como estrategia de desgaste"</div></div></div>
           <div class="step"><div class="step-n">24</div><div><div class="step-t">Desalojo Casa Octavio Paz · Feb 2024</div><div class="step-d">SSC + Guardia Nacional desalojaron el inmueble del Nobel mexicano. Predio a disposición del DIF-CDMX. Ilustra la complejidad cuando hay valor patrimonial además de comercial.</div><div class="step-tl">→ Guion: "incluso los inmuebles icónicos no están blindados"</div></div></div>
-          <div class="step"><div class="step-n">26</div><div><div class="step-t">Escalada CDMX · Enero 2026 · +103%</div><div class="step-d">Cuauhtémoc: 12 vs. 5 denuncias enero 2025. G.A. Madero e Iztapalapa también lideran. Gabinete contra Despojos: 430 restituciones acumuladas 2025-26, pero tasa de resolución plena menor al 30%.</div><div class="step-tl">→ Guion: "el problema no desapareció. Aceleró."</div></div></div>
+          <div class="step"><div class="step-n">25</div><div><div class="step-t">Escalada CDMX · 2024→2025 · denuncias +121%</div><div class="step-d">Las denuncias por despojo ante la Fiscalía de Delitos Ambientales y Protección Urbana pasaron de 349 (2024) a 771 (2025). Iztapalapa, Gustavo A. Madero y Cuauhtémoc lideran. El Gabinete contra Despojos restituyó 230 inmuebles en 2025 (30% de las carpetas), un avance real pero aún insuficiente.</div><div class="step-tl">→ Guion: "el problema no desapareció. Aceleró."</div></div></div>
         </div>
       </div>
     </div>
@@ -592,15 +731,19 @@ footer{border-top:.5px solid var(--line);padding:3rem 2rem;margin-top:2rem}
   </div>
   <div id="cierre-escaleta" class="tab-panel active">
     <div class="card-g" style="margin-bottom:1.5rem;margin-top:1rem">
-      <div class="cc"><div class="cc-n" style="color:var(--gold)">Dinámica de cierre · Podcast</div><div class="cc-s">El invitado aporta el último dato. El conductor tiene la última palabra.</div><div class="cc-row"><span class="cc-k">Último dato invitado</span><span class="cc-v">"En 2025 se restituyeron 430 inmuebles en CDMX. Suena bien. Son el 0.9% del total en carpeta."</span></div><div class="cc-row"><span class="cc-k">Recursos del invitado</span><span class="cc-v">INSUS, Gabinete CDMX, FGJEM, Plataforma Mafia del Despojo</span></div><div class="cc-row"><span class="cc-k">Cierre conductor</span><span class="cc-v">Monólogo de posicionamiento de Vicioculto — directo a cámara</span></div></div>
+      <div class="cc"><div class="cc-n" style="color:var(--gold)">Dinámica de cierre · Podcast</div><div class="cc-s">El invitado aporta el último dato. El conductor tiene la última palabra.</div><div class="cc-row"><span class="cc-k">Último dato invitado</span><span class="cc-v">"En 2025, el Gabinete restituyó 230 inmuebles en CDMX: el 30% de las carpetas de ese año. Avance real, pero siete de cada diez siguen esperando."</span></div><div class="cc-row"><span class="cc-k">Recursos del invitado</span><span class="cc-v">INSUS, Gabinete CDMX, FGJEM, Plataforma Mafia del Despojo</span></div><div class="cc-row"><span class="cc-k">Cierre conductor</span><span class="cc-v">Monólogo de posicionamiento de Vicioculto — directo a cámara</span></div></div>
       <div class="cc"><div class="cc-n" style="color:#4a7fbf">Instrucciones de producción</div><div class="cc-s">Plano y música de cierre</div><div class="cc-row"><span class="cc-k">Plano</span><span class="cc-v">Plano medio. Sin movimiento. Total quietud.</span></div><div class="cc-row"><span class="cc-k">Música</span><span class="cc-v">Fade in muy sutil. 30% volumen máximo.</span></div><div class="cc-row"><span class="cc-k">Objetivo</span><span class="cc-v">El espectador guarda el video y lo comparte a quien acaba de comprar un inmueble.</span></div></div>
     </div>
-    <div class="guion-line"><span class="speaker inv">INVITADO — último dato</span><p>En 2025 se restituyeron 430 inmuebles en la Ciudad de México. Suena bien cuando lo dices así. Pero es el 0.9% de todos los casos que hay en carpeta activa. El sistema está mejorando. Muy lentamente. Y los que no pueden esperar ese ritmo son los que están afuera de su casa hoy.</p></div>
-    <div class="guion-line"><span class="speaker dir">CONDUCTOR — despedida y recursos</span><p>INSUS, el Gabinete contra Despojos de la CDMX, la FGJEM en el Estado de México — los links están en la descripción. Gracias a [nombre del invitado] por estar hoy en <strong>Vicioculto</strong>. Y gracias a ti por quedarte los 30 minutos. <em>[pausa]</em> Ya sabes lo que tienes que hacer.</p></div>
+    <div class="guion-line"><span class="speaker inv">INVITADO — último dato</span><p>En 2025, el Gabinete contra Despojos restituyó 230 inmuebles en la Ciudad de México. Suena bien cuando lo dices así, y de hecho es un avance: es el 30% de las carpetas que se abrieron ese año en esa fiscalía. Pero significa que siete de cada diez dueños siguen esperando. El sistema está mejorando. Muy lentamente. Y los que no pueden esperar ese ritmo son los que están afuera de su casa hoy.</p></div>
+    <div class="guion-line"><span class="speaker dir">CONDUCTOR — despedida y recursos</span><p>INSUS, el Gabinete contra Despojos de la CDMX, la FGJEM en el Estado de México — los links están en la descripción. Gracias a [nombre del invitado] por estar hoy en <strong>Vicioculto</strong>. Y gracias a ti por quedarte los 30 minutos.</p></div>
+    <div class="guion-line"><span class="speaker dir">CONDUCTOR — TAGLINE DE DESPEDIDA · sello de marca</span><p><strong>"En el mundo de los bienes raíces, el que no sabe, paga. En Vicioculto, nos adelantamos a la jugada. Aprende, invierte y construye sin miedo. ¡Nos vemos a la próxima!"</strong></p></div>
+    <div class="broll-note"><span class="broll-lbl">📽 Tagline visual · placa final</span>Cierre a negro con la frase de marca en pantalla: <strong>"Lo que existe pero no se nombra."</strong> Logo Vicioculto. Mantener 3 seg.</div>
   </div>
   <div id="cierre-documental" class="tab-panel">
     <div class="insight-box" style="margin-top:1rem"><span class="in-lbl">📖 Instrucción técnica · Documental</span>Monólogo deliberado, sin prisa, autoridad tranquila. El presentador no repasa lo que dijo: declara su perspectiva de mercado. Plano cerrado final. Sin movimiento de cámara. Fade out lento a negro.</div>
-    <div class="guion-line" style="margin-top:1rem"><span class="speaker dir">PRESENTADOR — MONÓLOGO FINAL · TONO DECLARATIVO</span><p>En 2025 se restituyeron 430 inmuebles en la Ciudad de México. El 0.9% de los casos en carpeta activa. El sistema está mejorando. Muy lentamente. Y los que no pueden esperar ese ritmo son los que están afuera de su casa hoy, con las escrituras en la mano y sin que nadie los escuche. <em>[pausa de 2 seg]</em> En México, el mayor lujo no es comprar bien. <strong>Es comprar seguro.</strong> Y eso, en el mercado inmobiliario de 2026, no se da por sentado. Se construye. Se documenta. Se defiende. Los links a INSUS, el Gabinete contra Despojos y la FGJEM están en la descripción. Gracias por estar en <strong>Vicioculto</strong>.</p></div>
+    <div class="guion-line" style="margin-top:1rem"><span class="speaker dir">PRESENTADOR — MONÓLOGO FINAL · TONO DECLARATIVO</span><p>En 2025, el Gabinete contra Despojos restituyó 230 inmuebles en la Ciudad de México: el 30% de las carpetas de ese año. Un avance real. Pero significa que siete de cada diez dueños siguen afuera de su casa hoy, con las escrituras en la mano y sin que nadie los escuche. <em>[pausa de 2 seg]</em> En México, el mayor lujo no es comprar bien. <strong>Es comprar seguro.</strong> Y eso, en el mercado inmobiliario de 2026, no se da por sentado. Se construye. Se documenta. Se defiende. Los links a INSUS, el Gabinete contra Despojos y la FGJEM están en la descripción. Gracias por estar en <strong>Vicioculto</strong>.</p></div>
+    <div class="guion-line"><span class="speaker dir">PRESENTADOR — TAGLINE DE DESPEDIDA · sello de marca</span><p><strong>"En el mundo de los bienes raíces, el que no sabe, paga. En Vicioculto, nos adelantamos a la jugada. Aprende, invierte y construye sin miedo. ¡Nos vemos a la próxima!"</strong></p></div>
+    <div class="broll-note"><span class="broll-lbl">📽 Tagline visual · placa final</span>Cierre a negro con la frase de marca en pantalla: <strong>"Lo que existe pero no se nombra."</strong> Logo Vicioculto. Mantener 3 seg.</div>
   </div>
   <div class="monologue" style="margin-top:1.5rem">
     <div class="mono-eyebrow">Monólogo de cierre · Conductor / Presentador · Vicioculto — ambas versiones</div>
@@ -621,6 +764,44 @@ footer{border-top:.5px solid var(--line);padding:3rem 2rem;margin-top:2rem}
     <div class="mc"><div class="mc-idx">Micro #03 · Vicioculto</div><div class="mc-ttl">Chalco: El Estado que Llegó Tarde</div><div class="mc-row"><span class="mc-k">Extracción</span><span class="mc-v">Min 10:30 – 11:30</span></div><div class="mc-row"><span class="mc-k">Edición</span><span class="mc-v">Escala de grises · Texto rojo: "El Estado falló primero"</span></div><div class="mc-row"><span class="mc-k">Duración</span><span class="mc-v">58 segundos</span></div><div class="mc-row"><span class="mc-k">Detonante</span><span class="mc-v">"¿Crees que la ley la protegió o la abandonó?"</span></div><div class="mc-hook"><span class="lbl">Gancho 0–3 seg</span>"Doña Carlota denunció. Nadie llegó. Entonces ella llegó sola." [silencio + percusión grave]</div></div>
     <div class="mc"><div class="mc-idx">Micro #04 · Vicioculto</div><div class="mc-ttl">El Juez de Hidalgo y el Inmueble del Centro</div><div class="mc-row"><span class="mc-k">Extracción</span><span class="mc-v">Min 13:00 – 14:00</span></div><div class="mc-row"><span class="mc-k">Edición</span><span class="mc-v">Mapa animado CDMX → Hidalgo · Velocidad 1.5x</span></div><div class="mc-row"><span class="mc-k">Duración</span><span class="mc-v">55 segundos</span></div><div class="mc-row"><span class="mc-k">Detonante</span><span class="mc-v">"¿Sabías que esto es posible legalmente?"</span></div><div class="mc-hook"><span class="lbl">Gancho 0–3 seg</span>"¿Cómo se desaloja a 19 familias de CDMX con una orden de un juez de Hidalgo? Así funciona el fraude procesal en México."</div></div>
     <div class="mc"><div class="mc-idx">Micro #05 · Vicioculto</div><div class="mc-ttl">Los 3 Candados · El Teaser del Misterio</div><div class="mc-row"><span class="mc-k">Extracción</span><span class="mc-v">Min 0:45 + resumen min 20:00</span></div><div class="mc-row"><span class="mc-k">Objetivo</span><span class="mc-v">Conversión directa al video largo</span></div><div class="mc-row"><span class="mc-k">Duración</span><span class="mc-v">60 segundos</span></div><div class="mc-row"><span class="mc-k">Detonante</span><span class="mc-v">"¿Cuál de los tres ya tienes?" (Engagement por posición)</span></div><div class="mc-hook"><span class="lbl">Gancho 0–3 seg</span>"Hay 3 candados que te blindan ante el despojo. El primero lo tienen la mayoría. El segundo, pocos. El tercero, casi nadie. Y es el único que te salva de ir a la cárcel por recuperar tu propia casa."</div></div>
+  </div>
+  <div class="sec-eye" style="margin-top:2rem">Estrategia diferenciada por plataforma</div>
+  <div class="sec-title" style="font-size:clamp(18px,2.2vw,26px);margin-bottom:.6rem">Cada Algoritmo es<br><span class="acc">un Animal Distinto</span></div>
+  <div class="sec-intro" style="margin-bottom:1.5rem">El mismo clip no rinde igual en cada plataforma. La edición, el copy, el formato del gancho y el objetivo cambian. Aquí, la estrategia más efectiva para cada una.</div>
+  <div class="card-g g3">
+    <div class="cc">
+      <div class="cc-n" style="color:#4a7fbf">📘 Facebook & Instagram Reels</div>
+      <div class="cc-s">Audiencia 30–55 · poder adquisitivo · el comprador real</div>
+      <div class="cc-row"><span class="cc-k">Gancho</span><span class="cc-v">Texto grande en pantalla + voz. Mucho público ve sin audio: subtítulos quemados obligatorios.</span></div>
+      <div class="cc-row"><span class="cc-k">Duración óptima</span><span class="cc-v">30–60 seg. Reels premia que termines el loop.</span></div>
+      <div class="cc-row"><span class="cc-k">Edición</span><span class="cc-v">Más sobria, "premium". Menos efectos agresivos que TikTok. Tono autoridad.</span></div>
+      <div class="cc-row"><span class="cc-k">Copy</span><span class="cc-v">Caption largo que aporta valor (mini-artículo). FB favorece tiempo de lectura.</span></div>
+      <div class="cc-row"><span class="cc-k">Mejor pieza</span><span class="cc-v">Micro #02 y #05 (datos + los 3 candados). Apelan al inversionista.</span></div>
+      <div class="cc-row"><span class="cc-k">Detonante</span><span class="cc-v">Pregunta seria: "¿Verificaste tu folio real?" Compartir a familia.</span></div>
+      <div class="cc-row"><span class="cc-k">Horario</span><span class="cc-v">12:30–13:30 y 20:00–22:00 (descanso laboral)</span></div>
+    </div>
+    <div class="cc">
+      <div class="cc-n" style="color:var(--accent)">▶️ YouTube Shorts</div>
+      <div class="cc-s">Puente hacia el video largo · intención de búsqueda</div>
+      <div class="cc-row"><span class="cc-k">Gancho</span><span class="cc-v">Pregunta + promesa de respuesta en el video largo. El Short es tráiler, no destino final.</span></div>
+      <div class="cc-row"><span class="cc-k">Duración óptima</span><span class="cc-v">45–60 seg. Permite más contexto que TikTok.</span></div>
+      <div class="cc-row"><span class="cc-k">Edición</span><span class="cc-v">Ritmo medio. Conserva calidad de imagen: YouTube penaliza marca de agua de TikTok.</span></div>
+      <div class="cc-row"><span class="cc-k">Copy</span><span class="cc-v">Título con keyword SEO: "despojo inmueble México", "qué hacer si invaden mi casa".</span></div>
+      <div class="cc-row"><span class="cc-k">CTA</span><span class="cc-v">Fijado: "Episodio completo en el canal." Link directo. Conversión es el objetivo.</span></div>
+      <div class="cc-row"><span class="cc-k">Mejor pieza</span><span class="cc-v">Micro #04 y #05 (intriga que solo el largo resuelve).</span></div>
+      <div class="cc-row"><span class="cc-k">Horario</span><span class="cc-v">18:00–21:00 + mismo día del video largo</span></div>
+    </div>
+    <div class="cc">
+      <div class="cc-n" style="color:var(--gold)">🎵 TikTok</div>
+      <div class="cc-s">Alcance frío masivo · viralidad · audiencia amplia</div>
+      <div class="cc-row"><span class="cc-k">Gancho</span><span class="cc-v">Los primeros 1.5 seg lo deciden todo. Frase brutal antes que cualquier intro.</span></div>
+      <div class="cc-row"><span class="cc-k">Duración óptima</span><span class="cc-v">21–34 seg para máximo replay. Loop perfecto sube el alcance.</span></div>
+      <div class="cc-row"><span class="cc-k">Edición</span><span class="cc-v">Rápida, cortes secos, texto dinámico, trending sounds bajos de fondo si aplica.</span></div>
+      <div class="cc-row"><span class="cc-k">Copy</span><span class="cc-v">Caption corto + 1 pregunta polémica. Responder comentarios con video (stitch propio).</span></div>
+      <div class="cc-row"><span class="cc-k">Detonante</span><span class="cc-v">Polarización: "¿Carlota tenía derecho?" Debate = alcance.</span></div>
+      <div class="cc-row"><span class="cc-k">Mejor pieza</span><span class="cc-v">Micro #01 y #03 (paradoja + indignación emocional).</span></div>
+      <div class="cc-row"><span class="cc-k">Horario</span><span class="cc-v">7:00–9:00, 12:00–13:00, 19:00–23:00. Volumen alto: 1–2 diarios.</span></div>
+    </div>
   </div>
   <div class="sec-eye" style="margin-top:2rem">Calendarización de distribución</div>
   <div class="sec-title" style="font-size:clamp(18px,2.2vw,26px);margin-bottom:1.25rem">Despliegue Militar<br><span class="gold">Día a Día</span></div>
